@@ -249,7 +249,7 @@
                                     
                                         <div class="thumbnail-shadow">
                                             <h1 class="post-title">
-                                                关于
+                                                 指针数组 char * 和 char []到底有什么不一样?
                                             </h1>
                                             <div class="post-info">
                                                 <span class="post-category"><i class="Card Card-novel"></i>
@@ -264,25 +264,51 @@
                                                             </span>&nbsp;•&nbsp;
 
                                                             <span class="post-readtime">阅读时间:
-                                            0.1分</span>
+                                            2.2分</span>
                                                             <span class="post-edit"></span></div>
                                         </div>
                                         <div class="post-relative">
                                             <img alt="某在斯_Dome " src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884" srcset="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884" class="avatar avatar-100 photo" width="100" height="100">
                                             <span class="post-type-author"><a href="https://MouZaiSi-Demo.github.io/" title="由某在斯_Dome 发布" rel="author">某在斯_Dome <i class="Card Card-certify"></i></a></span>
-                                            <span class="post-publish"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2019-01-25</span>
+                                            <span class="post-publish"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;2020-12-30</span>
                                         </div>
                         </header>
                         <div class="post-main post-type-main">
                             <div class="post-content">
                                 <div class="post-content-real">
-                                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                                    <h2 id="数组指针做形参">数组指针做形参</h2>
+<p>把数组从主调函数传到被调函数时,我们可以传数组的首地址和数组长度就可以，为什么不是传递数组呢？还是为了效率，下面用代码说明：</p>
+<pre><code class="language-c">void Output(char *p, int len);
+
+　　int main()
+　　{
+　　　　char str[] = &quot;HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld &quot;;
+　　　　Output(str, strlen(str));
+　　　　system(&quot;pause&quot;);
+　　　　return 0;
+　　}
+
+　　void Output(char *p, int len)
+　　{
+　　　　for (int i = 0; i &lt; len; ++i)
+　　　　{
+　　　　　　printf(&quot;%c&quot;, *(p + i));
+　　　　}
+　　}
+</code></pre>
+<p>如上，如果我们Output函数不是用指针的方式char *p，而是用数组的方式char p[]的话，有什么不一样？</p>
+<p>我们定义的数组str有65字节，调用函数的话会传递这65字节的数组。</p>
+<p>char *p指针大小是4字节，只需要传递4字节的数据就可以了，不止少传递数据，执行起来也更快了。</p>
+<p>PS: 指针大小可以打印sizeof(int*),sizeof(char*)去验证。(因为如果操作系统的位数不一样 那么存储指针变量p的位数可能就不同 )</p>
+<pre><code class="language-c">char namea[] = &quot;earth&quot;;
+char *pname = &quot;earth&quot;;
+</code></pre>
+<p>One is an array (the name <code>namea</code> refers to a <em>block</em> of characters).</p>
+<p>The other is a pointer to a single character (the name <code>pname</code> refers to a pointer, which just happens to point to the first character of a block of characters).</p>
+<p>Although the former will often decay into the latter, that's not always the case. Try doing a <code>sizeof</code> on them both to see what I mean.</p>
+<p>The size of the array is, well, the size of the array (six characters, including the terminal null).</p>
+<p>The size of the pointer is dependent on your pointer width (4 or 8, or whatever). The size of what <code>pname</code> <em>points to</em> is not the array, but the first character. It will therefore be 1.</p>
+<p>You can also <em>move</em> pointers with things like <code>pname++</code> (unless they're declared constant, with something like <code>char *const pname = ...;</code> of course). You can't move an array name to point to it's second character (<code>namea++;</code>). -------  https://stackoverflow.com/questions/7886972/difference-between-char-and-char</p>
 
                                 </div>
                             </div>
@@ -300,8 +326,8 @@
                             <div class="post-copyright">
                                 作者:
                                 某在斯_Dome <br>永久链接:
-                                    <a href="https://MouZaiSi-Demo.github.io/post/about/" title="关于">
-                                        https://MouZaiSi-Demo.github.io/post/about/
+                                    <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/" title=" 指针数组 char * 和 char []到底有什么不一样?">
+                                        https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/
                                     </a><br> 协议: MIT License
                             </div>
                         </div>
@@ -325,14 +351,20 @@
                 <div class="lite-item nearby-article">
                     
                             
+                                <div class="nearby-article-right" style="padding: 10px;">
+                                    <a class="next" rel="next" href="https://MouZaiSi-Demo.github.io/post/hello-gridea/">
+                                        Hello Gridea<i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                                
                 </div>
                 <!--Share-->
                 <span style="margin-right:15px">
     <i class="post-share"></i>
     <span>&#x5206;&#x4EAB;:</span>
-                <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://MouZaiSi-Demo.github.io/post/about/"><i class="fa fa-qrcode"></i></a>
-                <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://MouZaiSi-Demo.github.io/post/about/&sharesource=qzone&title=关于&pics=https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884&summary="><i class="fa fa-qq"></i></a>
-                <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://MouZaiSi-Demo.github.io/post/about/&sharesource=weibo&title=关于 + " - " + &pic="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884"><i class="fa fa-weibo "></i></a>
+                <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/"><i class="fa fa-qrcode"></i></a>
+                <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/&sharesource=qzone&title= 指针数组 char * 和 char []到底有什么不一样?&pics=https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884&summary="><i class="fa fa-qq"></i></a>
+                <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/&sharesource=weibo&title= 指针数组 char * 和 char []到底有什么不一样? + " - " + &pic="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609334635884"><i class="fa fa-weibo "></i></a>
                 </span>
                 
                     
