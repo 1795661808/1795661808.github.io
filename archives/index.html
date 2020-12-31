@@ -21,7 +21,7 @@
 <meta name="keywords" content="">
 <meta name="gridea-theme" content="Card">
 <meta name="spider" content="https://nmsl.sbjxw.网址">
-<meta name="UpdateTime" content="1609422176695">
+<meta name="UpdateTime" content="1609426064488">
 <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io/CDN/js/jquery@3.4.1.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
@@ -191,13 +191,13 @@
                     
             </ul>
         </nav>
-        <form id="gridea-search-form" class="searchform" data-update="1609422176695" action="/search/index.html">
+        <form id="gridea-search-form" class="searchform" data-update="1609426064488" action="/search/index.html">
             <i class="Card Card-search"></i>
             <input id="s" class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
         </form>
     </div>
     <div id="mobile-menu">
-        <form id="gridea-search-form" class="mobile-searchform" data-update="1609422176695" action="/search/index.html">
+        <form id="gridea-search-form" class="mobile-searchform" data-update="1609426064488" action="/search/index.html">
             <i class="Card Card-search"></i>
             <input id="s" class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
         </form>
@@ -278,17 +278,6 @@
             <div id="sidebar">
     <ul>
         
-            <li class="lite-item">
-                <header class="lite-item-header">
-                    <h3 class="lite-item-title"><i class="Card Card-hitokoto"></i>&nbsp;&#x4E00;&#x8A00;</h3>
-                </header>
-                <div class="textwidget">
-                    <p>
-                        <b id="hitokoto"></b>
-                    </p>
-                </div>
-            </li>
-            
                 <!--
                 <li class="lite-item">
                     <header class="lite-item-header">
@@ -376,10 +365,10 @@
                                     var music_array = [];
                                     
                                     music_array.push({
-                                        name: '',
-                                        url: '',
-                                        artist: '',
-                                        cover: '',
+                                        name: '山眠',
+                                        url: 'http://music.163.com/song?id=1473801790&amp;userid=477950631',
+                                        artist: '饭碗的彼岸',
+                                        cover: 'https://github.com/MouZaiSi-Demo/MouZaiSi-Demo.github.io/blob/main/Songs/shanmian.jpg',
                                     });
                                     
                                     
@@ -393,6 +382,18 @@
                             </script>
                             
                                 
+                                    <script>
+                                        App.weather();
+                                    </script>
+                                    <li class="lite-item">
+                                        <header class="lite-item-header">
+                                            <h3 class="lite-item-title">&#x26C5;&#x5929;&#x6C14;</h3>
+                                        </header>
+                                        <div class="textwidget">
+                                            <div id="tp-weather-widget"></div>
+                                        </div>
+                                    </li>
+                                    
                                         
                                             
                                                 
@@ -434,6 +435,17 @@
         Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
             
                     
+
+                        <div style="font-size:12px">
+                            
+                                        已经建站 <b id='build_time'></b>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io/CDN/js/time.min.js"></script>
+                        <script>
+                            buildTime = '2020-12-30'
+                            setInterval(show_date_time, 1000, buildTime);
+                        </script>
+                        
                             &#x7248;&#x6743;&#x6240;&#x6709; &copy;
                             <script>
                                 var date = new Date();
@@ -469,8 +481,6 @@
             }, 2E3))
         });
         var OriginTitile = document.title;
-        
-        App.hitokoto();
         
         App.clearLog();
         App.outputlog();
