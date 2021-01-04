@@ -1,22 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://MouZaiSi-Demo.github.io/</id>
-    <title>某在斯_Dome </title>
-    <updated>2021-01-04T01:11:53.429Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
-    <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
-    <subtitle>MouZaiSi&apos;s Blogs</subtitle>
-    <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
-    <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 某在斯_Dome </rights>
-    <entry>
-        <title type="html"><![CDATA[欧几里得算法(辗转相除法)]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/">
-        </link>
-        <updated>2021-01-04T01:11:32.000Z</updated>
-        <content type="html"><![CDATA[<p>我们先给出由递归加上三目运算符极致优化过的函数封装。</p>
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>欧几里得算法(辗转相除法) | 某在斯_Dome </title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://MouZaiSi-Demo.github.io//media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="https://MouZaiSi-Demo.github.io//media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="欧几里得算法(辗转相除法) | 某在斯_Dome  » Feed" href="https://MouZaiSi-Demo.github.io//atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="https://MouZaiSi-Demo.github.io//styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="https://MouZaiSi-Demo.github.io//media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="欧几里得算法(辗转相除法)"/>
+    <meta property="og:url" content="https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="某在斯_Dome "/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://MouZaiSi-Demo.github.io/">某在斯_Dome </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://MouZaiSi-Demo.github.io//media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>欧几里得算法(辗转相除法)</h1>
+            <span class="meta">
+            	Posted on
+              2021-01-04，3 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>我们先给出由递归加上三目运算符极致优化过的函数封装。</p>
 <pre><code class="language-c++">int gcd(int a,int b)
 {
     return b ? gcd(b , a % b) : a; 
@@ -41,80 +122,120 @@
 <p>到这里,已经证明了(a,b)的公约数等于(b,a mod b)的公约数</p>
 <p>所以他们的最大公约数相等</p>
 <p>证毕</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[排序算法：归并排序]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/pai-xu-suan-fa-gui-bing-pai-xu/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/pai-xu-suan-fa-gui-bing-pai-xu/">
-        </link>
-        <updated>2021-01-02T09:00:35.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="排序算法"><a href="https://zhuanlan.zhihu.com/p/36075856">排序算法：<em>归并排序</em></a></h2>
-<p>今天下午在写归并排序 推荐一下知乎的一个答主的文章:排序算法：归并排序 - 程序员囧辉的文章 - 知乎 https://zhuanlan.zhihu.com/p/36075856</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[自增自减]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/">
-        </link>
-        <updated>2021-01-01T18:52:28.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-c">i++的过程为
 
-int temp = i；
+          
+          <p class="next-post">下一篇：
+            <a href="https://MouZaiSi-Demo.github.io/post/pai-xu-suan-fa-gui-bing-pai-xu/">
+              <span class="post-title">
+                排序算法：归并排序&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '42370aada25a5ffb9f93',
+    clientSecret: '6b29b31c09bf7600ab57db1425e4a42cf0fb6c65',
+    repo: 'Gitalk_Warehouse',
+    owner: 'MouZaiSi-Demo',
+    admin: ['MouZaiSi-Demo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
 
-i = i + 1；
+          
+          
+        
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/MouZaiSi-Demo" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://MouZaiSi-Demo.github.io//atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>某在斯_Dome </span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://MouZaiSi-Demo.github.io//media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://MouZaiSi-Demo.github.io//media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
 
-return a；//返回的是临时变量
-
-++i的过程为
-
-i = i + 1；
-
-return i；
-</code></pre>
-<p>两者的底层实现不同，同理适用于自减。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 指针数组 char * 和 char []到底有什么不一样?]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/">
-        </link>
-        <updated>2020-12-30T13:23:35.000Z</updated>
-        <content type="html"><![CDATA[<p>## <strong>数组指针做形参</strong></p>
-<p>把数组从主调函数传到被调函数时,我们可以传数组的首地址和数组长度就可以，为什么不是传递数组呢？还是为了效率，下面用代码说明：</p>
-<p>```c</p>
-<p>void Output(char *p, int len);</p>
-<p>int main()</p>
-<p>{</p>
-<p>char str[] = &quot;HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld &quot;;</p>
-<p>Output(str, strlen(str));</p>
-<p>system(&quot;pause&quot;);</p>
-<p>return 0;</p>
-<p>}</p>
-<p>void Output(char *p, int len)</p>
-<p>{</p>
-<p>for (int i = 0; i &lt; len; ++i)</p>
-<p>{</p>
-<p>printf(&quot;%c&quot;, *(p + i));</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<p>如上，如果我们Output函数不是用指针的方式char *p，而是用数组的方式char p[]的话，有什么不一样？</p>
-<p>我们定义的数组str有65字节，调用函数的话会传递这65字节的数组。</p>
-<p>char *p指针大小是4字节，只需要传递4字节的数据就可以了，不止少传递数据，执行起来也更快了。</p>
-<p>PS: 指针大小可以打印sizeof(int**),sizeof(char**)去验证。(因为如果操作系统的位数不一样 那么存储指针变量p的位数可能就不同 )</p>
-<p>```c</p>
-<p>char namea[] = &quot;earth&quot;;</p>
-<p>char *pname = &quot;earth&quot;;</p>
-<p>```</p>
-<p>One is an array (the name <code>namea</code> refers to a <strong>block</strong> of characters).</p>
-<p>The other is a pointer to a single character (the name <code>pname</code> refers to a pointer, which just happens to point to the first character of a block of characters).</p>
-<p>Although the former will often decay into the latter, that's not always the case. Try doing a <code>sizeof</code> on them both to see what I mean.</p>
-<p>The size of the array is, well, the size of the array (six characters, including the terminal null).</p>
-<p>The size of the pointer is dependent on your pointer width (4 or 8, or whatever). The size of what <code>pname</code> <strong>points to</strong> is not the array, but the first character. It will therefore be 1.</p>
-<p>You can also <strong>move</strong> pointers with things like <code>pname++</code> (unless they're declared constant, with something like <code>char *const pname = ...;</code> of course). You can't move an array name to point to it's second character (<code>namea++;</code>). -------  https://stackoverflow.com/questions/7886972/difference-between-char-and-char</p>
-]]></content>
-    </entry>
-</feed>
