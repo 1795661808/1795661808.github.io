@@ -36,7 +36,13 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">排序算法：</a></li>
+<li>
+<ul>
+<li><a href="#p">【 *p++ 】</a></li>
+<li><a href="#p-2">【 (*p)++ 】</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><strong>主要区别：</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -85,14 +91,30 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">排序算法：归并排序</h1>
+        <h1 class="text-3xl font-bold lg:mt-16"> (\*p)++和\*p++的区别?</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2021-01-02 / 1 min read
+          2021-01-05 / 1 min read
         </div>
         
         <div class="post-content yue">
-          <h2 id="排序算法"><a href="https://zhuanlan.zhihu.com/p/36075856">排序算法：<em>归并排序</em></a></h2>
-<p>今天下午在写归并排序 推荐一下知乎的一个答主的文章:排序算法：归并排序 - 程序员囧辉的文章 - 知乎 https://zhuanlan.zhihu.com/p/36075856</p>
+          <h3 id="p">【 *p++ 】</h3>
+<p>后缀递增 <code>++</code> 的优先级 比 取值运算符 <code>*</code> 高 ，<br>
+所以 <code>*p++</code> 等价 <code>*(p++)</code> ，</p>
+<p>后缀递增 <code>p++</code> 会先返回 <code>p</code> ，然后 <code>p = p + 1</code> 。<br>
+所以 <code>*(p++)</code> 返回 <code>*p</code> ，然后把 <code>p</code> 的地址加一。<br>
+（这个 加一 所增加的值取决于指针类型）</p>
+<h3 id="p-2">【 (*p)++ 】</h3>
+<p>括弧决定了结合优先级，取值运算符 <code>*</code> 会被先结合，<br>
+所以会先对 <code>p</code> 的地址取值，取得地址上的数值。<br>
+然后把这个值加一。</p>
+<h2 id="主要区别"><strong>主要区别：</strong></h2>
+<p><code>*p++</code> 是 返回 <code>*p</code> ，然后把 <code>p</code> 的地址加一。<br>
+<code>(*p)++</code> 是取值 <code>p</code> ，然后把这个值加一，返回<code>(*p)</code> 。</p>
+<p><code>*p++</code> 这个 <code>++</code> 的操作是针对地址。<br>
+<code>(*p)++</code> 这个 <code>++</code> 的操作是针对地址上的值。</p>
+<hr>
+<p>这个区别主要是优先级造成的,所以下面贴上c语言的优先级<br>
+<img src="https://MouZaiSi-Demo.github.io//post-images/1609828714533.jpg" alt="" loading="lazy"></p>
 
         </div>
 
@@ -101,21 +123,12 @@
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  欧几里得算法(辗转相除法)
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/">
+              <a href="https://MouZaiSi-Demo.github.io/post/li-yong-netsh-zai-windows-shang-xun-zhao-yi-lian-guo-de-wifi-mi-ma/">
                 <h3 class="post-title">
-                  自增自减
+                  利用netsh在windows上寻找已连过的wifi密码
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
