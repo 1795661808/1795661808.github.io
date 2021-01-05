@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+     <meta charset="utf-8" />
+  <title>利用netsh在windows上寻找已连过的wifi密码 | 某在斯_Dome </title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//styles/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+   <script src="https://cdn.staticfile.org/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+ </head>
+ <body>
+     <div class="sidebar animated fadeInDown">
+   <div class="logo-title">
+    <div class="title">
+     <img src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609816719870" style="width:127px;" />
+
+     <h3 title=""><a href="/">某在斯</a></h3>
+
+     <div class="description">
+      <p>MouZaiSi's Blogs</p>
+     </div>
+    </div>
+   </div>
+   <ul class="social-links">
+
+
+    
+
+    
+
+    
+
+    <li><a href="https://github.com/MouZaiSi-Demo"><i class="fa fa-github"></i></a></li>
+ 
+    
+
+    
+
+    
+
+    
+
+    
+
+    <li><a href="1795661808"><i class="fa fa-qq"></i></a></li>
+ 
+    
+
+    
+
+   </ul>
+   <div class="footer">
+    <div class="by_farbox">
+   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    
+
+    </div>
+   </div>
+  </div>
+  <div class="main">
+     <div class="page-top animated fadeInDown">
+    <div class="nav">
+    
+     <li><a  href="/">首页</a></li>
+
+     <li><a  href="/archives">归档</a></li>
+
+     <li><a  href="/tags">标签</a></li>
+
+     <li><a  href="/post/about">关于</a></li>
+
+    </div>
+    <div class="information">
+     <div class="back_btn">
+      <li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li>
+     </div>
+    </div>
+   </div>
+   <div class="autopagerize_page_element">
+    <div class="content">
+     <div class="post-page">
+      <div class="post animated fadeInDown">
+       <div class="post-title">
+        <h3><a>利用netsh在windows上寻找已连过的wifi密码</a></h3>
+       </div>
+       <div class="post-content">
+        <p>首先得知道netsh是什么</p>
+<p><strong>netsh简介</strong></p>
+<p>是windows系统本身提供的功能强大的网络配置命令行工具,常用命令如下:</p>
+<p>查看ip配置信息:</p>
+<pre><code>netsh interface ip show config 
+</code></pre>
+<p>查看网络配置文件:</p>
+<pre><code>netsh -c interface dump
+</code></pre>
+<p>开/关网卡:</p>
+<pre><code>netsh int set int name=&quot;ethernet&quot; admin=enabled 
+
+netsh int set int name=&quot;ethernet&quot;admin=disabled
+</code></pre>
+<p>查看所有tcp连接:</p>
+<pre><code>netsh interface ip show tcpconnections 
+</code></pre>
+<p>设置本机ip、子网掩码、网关ip:</p>
+<pre><code>netsh interface ip set address &quot;Local Area Connection&quot;static 192.168.1.2 255.255.255.0 192.168.1.1
+</code></pre>
+<p>开/关防火墙:</p>
+<pre><code class="language-text">netsh firewall set opmode enable 
+
+netsh firewall set opmode disable 
+</code></pre>
+<p>记不住也完全没关系,可以直接在命令行内输入netsh ?来获取接下来的命令</p>
+<pre><code>下列指令有效:
+
+此上下文中的命令:
+..             - 移到上一层上下文级。
+?              - 显示命令列表。
+abort          - 丢弃在脱机模式下所做的更改。
+add            - 在项目列表上添加一个配置项目。
+advfirewall    - 更改到 `netsh advfirewall' 上下文。
+alias          - 添加一个别名
+bridge         - 更改到 `netsh bridge' 上下文。
+bye            - 退出程序。
+commit         - 提交在脱机模式中所做的更改。
+delete         - 在项目列表上删除一个配置项目。
+dhcpclient     - 更改到 `netsh dhcpclient' 上下文。
+dnsclient      - 更改到 `netsh dnsclient' 上下文。
+dump           - 显示一个配置脚本。
+exec           - 运行一个脚本文件。
+exit           - 退出程序。
+firewall       - 更改到 `netsh firewall' 上下文。
+help           - 显示命令列表。
+http           - 更改到 `netsh http' 上下文。
+interface      - 更改到 `netsh interface' 上下文。
+ipsec          - 更改到 `netsh ipsec' 上下文。
+lan            - 更改到 `netsh lan' 上下文。
+mbn            - 更改到 `netsh mbn' 上下文。
+namespace      - 更改到 `netsh namespace' 上下文。
+netio          - 更改到 `netsh netio' 上下文。
+offline        - 将当前模式设置成脱机。
+online         - 将当前模式设置成联机。
+p2p            - 更改到 `netsh p2p' 上下文。
+popd           - 从堆栈上打开一个上下文。
+pushd          - 将当前上下文放入堆栈。
+quit           - 退出程序。
+ras            - 更改到 `netsh ras' 上下文。
+rpc            - 更改到 `netsh rpc' 上下文。
+set            - 更新配置设置。
+show           - 显示信息。
+trace          - 更改到 `netsh trace' 上下文。
+unalias        - 删除一个别名。
+wcn            - 更改到 `netsh wcn' 上下文。
+wfp            - 更改到 `netsh wfp' 上下文。
+winhttp        - 更改到 `netsh winhttp' 上下文。
+winsock        - 更改到 `netsh winsock' 上下文。
+wlan           - 更改到 `netsh wlan' 上下文。
+
+下列的子上下文可用:
+ advfirewall bridge dhcpclient dnsclient firewall http interface ipsec lan mbn namespace netio p2p ras rpc trace wcn wfp winhttp winsock wlan
+</code></pre>
+<hr>
+<p>现在回到主题</p>
+<p>我们要利用cmd来获取已连接过的widows密码</p>
+<p>1.Windows键+R</p>
+<p>2.输入cmd 打开命令窗口</p>
+<p>3.输入</p>
+<ul>
+<li>
+<p>netsh wlan show profiles //这时候会出现连接过的WiFi名字</p>
+</li>
+<li>
+<p>netsh wlan show profiles name=&quot;<em><strong>具体的WiFi名称</strong></em>&quot; key=clear //这样就显示了WiFi密码</p>
+</li>
+</ul>
+<hr>
+<p>以我的wifi来做例子</p>
+<p>输入第一条命令后</p>
+<pre><code>C:\Users\17956&gt;netsh wlan show profiles
+
+接口 WLAN 上的配置文件:
+
+
+组策略配置文件(只读)
+---------------------------------
+    &lt;无&gt;
+
+用户配置文件
+-------------
+    所有用户配置文件 : mzs
+    所有用户配置文件 : i-WZU
+    所有用户配置文件 : WZU-free
+    所有用户配置文件 : CMCC-pun2
+    所有用户配置文件 : zhazha
+    所有用户配置文件 : CMCC-YfQX
+    所有用户配置文件 : 数zhazha
+    所有用户配置文件 : CMCC-7gmf
+
+</code></pre>
+<p>输入第二条命令</p>
+<pre><code>C:\Users\17956&gt;netsh wlan show profiles name=&quot;mzs&quot; key=clear
+
+接口 WLAN 上的配置文件 mzs:
+=======================================================================
+
+已应用: 所有用户配置文件
+
+配置文件信息
+-------------------
+    版本                   : 1
+    类型                   : 无线局域网
+    名称                   : mzs
+    控制选项               :
+        连接模式           : 自动连接
+        网络广播           : 只在网络广播时连接
+        AutoSwitch         : 请勿切换到其他网络
+        MAC 随机化: 禁用
+
+连接设置
+---------------------
+    SSID 数目              : 1
+    SSID 名称              :“mzs”
+    网络类型               : 结构
+    无线电类型             : [ 任何无线电类型 ]
+    供应商扩展名           : 不存在
+
+安全设置
+-----------------
+    身份验证         : WPA2 - 个人
+    密码                 : CCMP
+    身份验证         : WPA2 - 个人
+    密码                 : GCMP
+    安全密钥               : 存在
+    关键内容            : baibai123
+
+费用设置
+-------------
+    费用                : 无限制
+    阻塞                : 否
+    接近数据限制        : 否
+    过量数据限制        : 否
+    漫游                : 否
+    费用来源            : 默认
+
+</code></pre>
+<p>上面代码块中的关键内容就是这个wifi的wifi密码啦!</p>
+<hr>
+<p>注意:如果输入netsh的命令说 &quot;netsh不是内外部命令...&quot; 说明你的环境变量已经遭到改变(有可能是某些软件,或者你在配置编程环境变量的时候不小心改变).</p>
+<p>拯救的方法很简单:</p>
+<p>1.右键我的电脑</p>
+<p>2.点高级系统设置(以Windows 10 为例)</p>
+<p>3.点环境变量(N)...</p>
+<p>4.找到名为path的变量 并双击它进入编辑环境变量界面</p>
+<p>5.新建 输入%SystemRoot%\system32 按确定即可关闭所有界面</p>
+<p>6.然后重新启动cmd再次输入netsh试试</p>
+
+       </div>
+       <div class="post-footer">
+        <div class="meta">
+         <div class="info">
+          <i class="fa fa-sun-o"></i>
+          <span class="date">2021-01-05</span>
+          <i class="fa fa-tag"></i>
+          
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="share">
+       <div class="evernote">
+        <a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a>
+       </div>
+       <div class="weibo">
+        <a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a>
+       </div>
+       <div class="twitter">
+        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://MouZaiSi-Demo.github.io/post/li-yong-netsh-zai-windows-shang-xun-zhao-yi-lian-guo-de-wifi-mi-ma/,;"></a>
+       </div>
+      </div>
+      <div class="pagination">
+       <ul class="clearfix">
+
+        
+        <li class="next pagbuttons"><a class="btn" role="navigation" href="https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/" title=" 欧几里得算法(辗转相除法)">下一篇</a></li>
+        
+       </ul>
+      </div>
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '42370aada25a5ffb9f93',
+    clientSecret: '6b29b31c09bf7600ab57db1425e4a42cf0fb6c65',
+    repo: 'Gitalk_Warehouse',
+    owner: 'MouZaiSi-Demo',
+    admin: ['MouZaiSi-Demo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="https://MouZaiSi-Demo.github.io//media/scripts/jquery.js"></script>
+  <script src="https://MouZaiSi-Demo.github.io//media/scripts/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://MouZaiSi-Demo.github.io//media/scripts/jquery.appear.js"></script>
+
+
+ </body>
+</html>
