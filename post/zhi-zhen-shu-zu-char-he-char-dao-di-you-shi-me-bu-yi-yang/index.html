@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>某在斯_Dome </title>
 <meta name="description" content="MouZaiSi's Blogs" />
-<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico?v=1609853732053">
+<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico?v=1609854706383">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://MouZaiSi-Demo.github.io/">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609853732053" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1609854706383" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">某在斯_Dome </h1>
       </div>
@@ -84,33 +84,54 @@
         </div>
         
         <div class="post-content yue">
-          <p>## <strong>数组指针做形参</strong></p>
+          <p><strong>数组指针做形参</strong></p>
 <p>把数组从主调函数传到被调函数时,我们可以传数组的首地址和数组长度就可以，为什么不是传递数组呢？还是为了效率，下面用代码说明：</p>
-<p>```c</p>
-<p>void Output(char *p, int len);</p>
-<p>int main()</p>
-<p>{</p>
-<p>char str[] = &quot;HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld &quot;;</p>
-<p>Output(str, strlen(str));</p>
-<p>system(&quot;pause&quot;);</p>
-<p>return 0;</p>
-<p>}</p>
-<p>void Output(char *p, int len)</p>
-<p>{</p>
-<p>for (int i = 0; i &lt; len; ++i)</p>
-<p>{</p>
-<p>printf(&quot;%c&quot;, *(p + i));</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
+<pre><code class="language-c">
+void Output(char *p, int len);
+
+
+
+　　int main()
+
+　　{
+
+　　　　char str[] = &quot;HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld &quot;;
+
+　　　　Output(str, strlen(str));
+
+　　　　system(&quot;pause&quot;);
+
+　　　　return 0;
+
+　　}
+
+
+
+　　void Output(char *p, int len)
+
+　　{
+
+　　　　for (int i = 0; i &lt; len; ++i)
+
+　　　　{
+
+　　　　　　printf(&quot;%c&quot;, *(p + i));
+
+　　　　}
+
+　　}
+
+</code></pre>
 <p>如上，如果我们Output函数不是用指针的方式char *p，而是用数组的方式char p[]的话，有什么不一样？</p>
 <p>我们定义的数组str有65字节，调用函数的话会传递这65字节的数组。</p>
 <p>char *p指针大小是4字节，只需要传递4字节的数据就可以了，不止少传递数据，执行起来也更快了。</p>
 <p>PS: 指针大小可以打印sizeof(int**),sizeof(char**)去验证。(因为如果操作系统的位数不一样 那么存储指针变量p的位数可能就不同 )</p>
-<p>```c</p>
-<p>char namea[] = &quot;earth&quot;;</p>
-<p>char *pname = &quot;earth&quot;;</p>
-<p>```</p>
+<pre><code class="language-c">
+char namea[] = &quot;earth&quot;;
+
+char *pname = &quot;earth&quot;;
+
+</code></pre>
 <p>One is an array (the name <code>namea</code> refers to a <strong>block</strong> of characters).</p>
 <p>The other is a pointer to a single character (the name <code>pname</code> refers to a pointer, which just happens to point to the first character of a block of characters).</p>
 <p>Although the former will often decay into the latter, that's not always the case. Try doing a <code>sizeof</code> on them both to see what I mean.</p>
