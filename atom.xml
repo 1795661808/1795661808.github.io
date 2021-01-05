@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-05T13:51:49.919Z</updated>
+    <updated>2021-01-05T15:07:11.719Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,55 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[数学知识——素数专题]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/shu-xue-zhi-shi-su-shu-zhuan-ti/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/shu-xue-zhi-shi-su-shu-zhuan-ti/">
+        </link>
+        <updated>2021-01-05T15:05:35.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="判断素数is_prime">判断素数(is_prime)</h2>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/zh-hk/%E8%B4%A8%E6%95%B0">质数</a></p>
+<p>指在大于<a href="https://zh.wikipedia.org/wiki/1">1</a>的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E6%95%B0">自然数</a>中，除了1和该数自身外，无法被其他自然数<a href="https://zh.wikipedia.org/wiki/%E6%95%B4%E9%99%A4">整除</a>的数（也可定义为只有1与该数本身两个正因数的数）。</p>
+</blockquote>
+<p>1.质数的判定</p>
+<p>先给出定义下的c++代码</p>
+<pre><code class="language-c++">bool is_prime(int x)
+{
+    if (x &lt; 2) return false;
+    for (int i = 2; i &lt;= x ; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+</code></pre>
+<p>此时这个算法的时间复杂度是O(n) 效率比较低</p>
+<p>素数有个性质 d | n =&gt; n/d | n  所以每次都枚举较小的那一个 也就是d 小于等于n/d</p>
+<p>也就是d*d &lt;n =&gt;</p>
+<hr>
+<p>d&lt; sqrt(n)  此时时间复杂度就是O(根号n)</p>
+<pre><code class="language-c++">bool is_prime(int x)
+{
+    if (x &lt; 2) return false;
+    for (int i = 2; i &lt;= x/i ; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+</code></pre>
+<p>——————试除法试根</p>
+<hr>
+<p>当然 可能很多人会像下面那样写</p>
+<pre><code>for (int i = 2; i &lt;= sqrt(x) ; i ++ )
+</code></pre>
+<p>这样子不推荐 因为每一次循环都会执行一下sqrt函数 本身sqrt函数就比较慢</p>
+<pre><code class="language-c++">for (int i = 2; i * i &lt;= x ; i ++ )
+</code></pre>
+<p>这样子看似可以 但是i如果是int 那么最大只有2的31次(正数) 当x非常接近于2的31次时 (i+1)的平方就溢出了 这样根据编码 会变成负数</p>
+<hr>
+<p>未完待续......</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[12个Visual Studio调试效率技巧(搬运)]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/</id>

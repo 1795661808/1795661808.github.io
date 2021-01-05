@@ -30,34 +30,17 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            MouZaiSi's Blogs
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/MouZaiSi-Demo" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%A4%E6%96%AD%E7%B4%A0%E6%95%B0is_prime">判断素数(is_prime)</a></li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -101,13 +84,103 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">数学知识——素数专题</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-01-05 / 2 min read
+        </div>
+        
+        <div class="post-content yue">
+          <h2 id="判断素数is_prime">判断素数(is_prime)</h2>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/zh-hk/%E8%B4%A8%E6%95%B0">质数</a></p>
+<p>指在大于<a href="https://zh.wikipedia.org/wiki/1">1</a>的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E6%95%B0">自然数</a>中，除了1和该数自身外，无法被其他自然数<a href="https://zh.wikipedia.org/wiki/%E6%95%B4%E9%99%A4">整除</a>的数（也可定义为只有1与该数本身两个正因数的数）。</p>
+</blockquote>
+<p>1.质数的判定</p>
+<p>先给出定义下的c++代码</p>
+<pre><code class="language-c++">bool is_prime(int x)
+{
+    if (x &lt; 2) return false;
+    for (int i = 2; i &lt;= x ; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+</code></pre>
+<p>此时这个算法的时间复杂度是O(n) 效率比较低</p>
+<p>素数有个性质 d | n =&gt; n/d | n  所以每次都枚举较小的那一个 也就是d 小于等于n/d</p>
+<p>也就是d*d &lt;n =&gt;</p>
+<hr>
+<p>d&lt; sqrt(n)  此时时间复杂度就是O(根号n)</p>
+<pre><code class="language-c++">bool is_prime(int x)
+{
+    if (x &lt; 2) return false;
+    for (int i = 2; i &lt;= x/i ; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+</code></pre>
+<p>——————试除法试根</p>
+<hr>
+<p>当然 可能很多人会像下面那样写</p>
+<pre><code>for (int i = 2; i &lt;= sqrt(x) ; i ++ )
+</code></pre>
+<p>这样子不推荐 因为每一次循环都会执行一下sqrt函数 本身sqrt函数就比较慢</p>
+<pre><code class="language-c++">for (int i = 2; i * i &lt;= x ; i ++ )
+</code></pre>
+<p>这样子看似可以 但是i如果是int 那么最大只有2的31次(正数) 当x非常接近于2的31次时 (i+1)的平方就溢出了 这样根据编码 会变成负数</p>
+<hr>
+<p>未完待续......</p>
+
+        </div>
+
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/">
+                <h3 class="post-title">
+                  12个Visual Studio调试效率技巧(搬运)
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '42370aada25a5ffb9f93',
+    clientSecret: '6b29b31c09bf7600ab57db1425e4a42cf0fb6c65',
+    repo: 'Gitalk_Warehouse',
+    owner: 'MouZaiSi-Demo',
+    admin: ['MouZaiSi-Demo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 
