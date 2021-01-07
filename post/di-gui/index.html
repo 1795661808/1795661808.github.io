@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>某在斯_Dome </title>
 <meta name="description" content="MouZaiSi's Blogs" />
-<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico?v=1610013568330">
+<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico?v=1610013872702">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://MouZaiSi-Demo.github.io/">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1610013568330" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1610013872702" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">某在斯_Dome </h1>
       </div>
@@ -104,7 +104,7 @@ long long  fibonacci(int n)//用longlong是因为fibonacci数列后面的值十�
 </code></pre>
 <p>但是 如果你递归fibinacci(100) 你会发现值迟迟不出现</p>
 <p>这是因为每次都重复计算了</p>
-<p>(图片)</p>
+<figure data-type="image" tabindex="1"><img src="https://MouZaiSi-Demo.github.io//post-images/1610013869532.jpg" alt="" loading="lazy"></figure>
 <p>从图中，我们可以直观地看到，想要计算 f(5)，需要先计算 f(4) 和 f(3)，而计算 f(4) 还需要计算 f(3)，因此，f(3) 就被计算了很多次，这就是重复计算问题。</p>
 <p>为此 提供一种思路 就是在第一次递归的时候 就把递归过的值给保存在数组中 再每次递归时先检查对应的数组 如果有值就直接调用而不去继续堆栈</p>
 <p>还是用c写</p>
