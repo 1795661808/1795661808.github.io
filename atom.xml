@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-06T13:25:28.367Z</updated>
+    <updated>2021-01-07T09:58:53.807Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,82 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[ 递归]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/di-gui/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/di-gui/">
+        </link>
+        <updated>2021-01-07T09:57:56.000Z</updated>
+        <content type="html"><![CDATA[<p>递归很典型实现的就是阶乘和Fibonacci数列</p>
+<p>这次讲一讲FIbonacci数列</p>
+<p>数学中，<strong>斐波那契数</strong>，通常表示为<em>˚F Ñ</em>，形成一个<a href="https://en.wikipedia.org/wiki/Integer_sequence">序列</a>，叫做<strong>斐波纳契数列</strong>，使得每个数字是两个前述者的总和，选自0和1。</p>
+<p>因此，序列的开始是：</p>
+<p>1 1 2  3  5  8  13  21  34...</p>
+<p>递推公式</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mo>=</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>+</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">an = an-1 + an-2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span></p>
+<p>用c写出来的代码就是</p>
+<pre><code class="language-c">#define N 10000
+
+long long  fibonacci(int n)//用longlong是因为fibonacci数列后面的值十分大
+{
+    if (n == 1 || n == 2)
+        return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+</code></pre>
+<p>但是 如果你递归fibinacci(100) 你会发现值迟迟不出现</p>
+<p>这是因为每次都重复计算了</p>
+<p>(图片)</p>
+<p>从图中，我们可以直观地看到，想要计算 f(5)，需要先计算 f(4) 和 f(3)，而计算 f(4) 还需要计算 f(3)，因此，f(3) 就被计算了很多次，这就是重复计算问题。</p>
+<p>为此 提供一种思路 就是在第一次递归的时候 就把递归过的值给保存在数组中 再每次递归时先检查对应的数组 如果有值就直接调用而不去继续堆栈</p>
+<p>还是用c写</p>
+<pre><code class="language-c">#define N 10000
+
+long long  f[N];//用来保存已经递归的值
+long long  fibonacci(int n)
+{
+    if (n == 1 || n == 2)
+        return 1;
+    if (f[n] != 0)//检查该值有没有被递归过
+        return f[n];
+    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);/*这里要注意 确保两个项的顺序不变 这样能确保右项能直接使用左项保存的值*/
+}
+
+
+</code></pre>
+<p>这样的方法叫做记忆化搜索 也是实现的自顶向下的去搜索</p>
+<p>你再去试试  f(100)轻轻松松 但是在f(1624)的时候会溢出longlong 这时候就得要用数组保存值了</p>
+<hr>
+<p>完整的输入输出</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+
+#define N 10000
+
+long long  f[N];
+long long  fibonacci(int n)
+{
+    if (n == 1 || n == 2)
+        return 1;
+    if (f[n] != 0)
+        return f[n];
+    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main(void)
+{
+    int x;
+    scanf(&quot;%d&quot;, &amp;x);
+
+    printf(&quot;%lld&quot;, fibonacci(x));
+    
+    return 0;
+
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[指针和数组的羁绊]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/</id>
@@ -441,68 +517,6 @@ i = i + 1；
 return i；
 </code></pre>
 <p>两者的底层实现不同，同理适用于自减。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 指针数组 char * 和 char []到底有什么不一样?]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/">
-        </link>
-        <updated>2020-12-30T13:23:35.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>数组指针做形参</strong></p>
-<p>把数组从主调函数传到被调函数时,我们可以传数组的首地址和数组长度就可以，为什么不是传递数组呢？还是为了效率，下面用代码说明：</p>
-<pre><code class="language-c">
-void Output(char *p, int len);
-
-
-
-　　int main()
-
-　　{
-
-　　　　char str[] = &quot;HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld &quot;;
-
-　　　　Output(str, strlen(str));
-
-　　　　system(&quot;pause&quot;);
-
-　　　　return 0;
-
-　　}
-
-
-
-　　void Output(char *p, int len)
-
-　　{
-
-　　　　for (int i = 0; i &lt; len; ++i)
-
-　　　　{
-
-　　　　　　printf(&quot;%c&quot;, *(p + i));
-
-　　　　}
-
-　　}
-
-</code></pre>
-<p>如上，如果我们Output函数不是用指针的方式char *p，而是用数组的方式char p[]的话，有什么不一样？</p>
-<p>我们定义的数组str有65字节，调用函数的话会传递这65字节的数组。</p>
-<p>char *p指针大小是4字节，只需要传递4字节的数据就可以了，不止少传递数据，执行起来也更快了。</p>
-<p>PS: 指针大小可以打印sizeof(int**),sizeof(char**)去验证。(因为如果操作系统的位数不一样 那么存储指针变量p的位数可能就不同 )</p>
-<pre><code class="language-c">
-char namea[] = &quot;earth&quot;;
-
-char *pname = &quot;earth&quot;;
-
-</code></pre>
-<p>One is an array (the name <code>namea</code> refers to a <strong>block</strong> of characters).</p>
-<p>The other is a pointer to a single character (the name <code>pname</code> refers to a pointer, which just happens to point to the first character of a block of characters).</p>
-<p>Although the former will often decay into the latter, that's not always the case. Try doing a <code>sizeof</code> on them both to see what I mean.</p>
-<p>The size of the array is, well, the size of the array (six characters, including the terminal null).</p>
-<p>The size of the pointer is dependent on your pointer width (4 or 8, or whatever). The size of what <code>pname</code> <strong>points to</strong> is not the array, but the first character. It will therefore be 1.</p>
-<p>You can also <strong>move</strong> pointers with things like <code>pname++</code> (unless they're declared constant, with something like <code>char *const pname = ...;</code> of course). You can't move an array name to point to it's second character (<code>namea++;</code>). -------  https://stackoverflow.com/questions/7886972/difference-between-char-and-char</p>
 ]]></content>
     </entry>
 </feed>

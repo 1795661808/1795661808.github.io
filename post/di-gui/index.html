@@ -78,27 +78,80 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">自增自减</h1>
+        <h1 class="text-3xl font-bold lg:mt-16"> 递归</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2021-01-02 / 1 min read
+          2021-01-07 / 3 min read
         </div>
         
         <div class="post-content yue">
-          <pre><code class="language-c">i++的过程为
+          <p>递归很典型实现的就是阶乘和Fibonacci数列</p>
+<p>这次讲一讲FIbonacci数列</p>
+<p>数学中，<strong>斐波那契数</strong>，通常表示为<em>˚F Ñ</em>，形成一个<a href="https://en.wikipedia.org/wiki/Integer_sequence">序列</a>，叫做<strong>斐波纳契数列</strong>，使得每个数字是两个前述者的总和，选自0和1。</p>
+<p>因此，序列的开始是：</p>
+<p>1 1 2  3  5  8  13  21  34...</p>
+<p>递推公式</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mo>=</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>+</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">an = an-1 + an-2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span></p>
+<p>用c写出来的代码就是</p>
+<pre><code class="language-c">#define N 10000
 
-int temp = i；
-
-i = i + 1；
-
-return a；//返回的是临时变量
-
-++i的过程为
-
-i = i + 1；
-
-return i；
+long long  fibonacci(int n)//用longlong是因为fibonacci数列后面的值十分大
+{
+    if (n == 1 || n == 2)
+        return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
 </code></pre>
-<p>两者的底层实现不同，同理适用于自减。</p>
+<p>但是 如果你递归fibinacci(100) 你会发现值迟迟不出现</p>
+<p>这是因为每次都重复计算了</p>
+<p>(图片)</p>
+<p>从图中，我们可以直观地看到，想要计算 f(5)，需要先计算 f(4) 和 f(3)，而计算 f(4) 还需要计算 f(3)，因此，f(3) 就被计算了很多次，这就是重复计算问题。</p>
+<p>为此 提供一种思路 就是在第一次递归的时候 就把递归过的值给保存在数组中 再每次递归时先检查对应的数组 如果有值就直接调用而不去继续堆栈</p>
+<p>还是用c写</p>
+<pre><code class="language-c">#define N 10000
+
+long long  f[N];//用来保存已经递归的值
+long long  fibonacci(int n)
+{
+    if (n == 1 || n == 2)
+        return 1;
+    if (f[n] != 0)//检查该值有没有被递归过
+        return f[n];
+    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);/*这里要注意 确保两个项的顺序不变 这样能确保右项能直接使用左项保存的值*/
+}
+
+
+</code></pre>
+<p>这样的方法叫做记忆化搜索 也是实现的自顶向下的去搜索</p>
+<p>你再去试试  f(100)轻轻松松 但是在f(1624)的时候会溢出longlong 这时候就得要用数组保存值了</p>
+<hr>
+<p>完整的输入输出</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+
+#define N 10000
+
+long long  f[N];
+long long  fibonacci(int n)
+{
+    if (n == 1 || n == 2)
+        return 1;
+    if (f[n] != 0)
+        return f[n];
+    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main(void)
+{
+    int x;
+    scanf(&quot;%d&quot;, &amp;x);
+
+    printf(&quot;%lld&quot;, fibonacci(x));
+    
+    return 0;
+
+}
+</code></pre>
 
         </div>
 
@@ -107,21 +160,12 @@ return i；
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/pai-xu-suan-fa-gui-bing-pai-xu/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  排序算法：归并排序
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-shu-zu-char-he-char-dao-di-you-shi-me-bu-yi-yang/">
+              <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/">
                 <h3 class="post-title">
-                   指针数组 char * 和 char []到底有什么不一样?
+                  指针和数组的羁绊
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
