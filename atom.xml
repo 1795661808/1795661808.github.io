@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-07T10:08:59.282Z</updated>
+    <updated>2021-01-08T16:23:40.393Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,93 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[记录自己写的一个数组指针的BUG(太蠢了)]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/">
+        </link>
+        <updated>2021-01-08T16:23:18.000Z</updated>
+        <content type="html"><![CDATA[<p>这是错误的demo 无法输入 一直无法进行 用vs调试以后只说数据读取错误</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define N 3
+
+void sort(char* ptr[N]) {
+	char * temp = NULL;
+	int i, j;
+	
+	for (i = 0; i &lt; N; i++) {
+		for (j = i + 1; j &lt; N; j++) {
+			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
+				temp = ptr[i];
+				ptr[i] = ptr[j];
+				ptr[j] = temp;
+			}
+		}
+	}
+}
+int main(void)
+{
+	char* str[3]; //= { &quot;Japan&quot;,&quot;China&quot;,&quot;German&quot; };
+	int i = 0;
+
+	for (i = 0; i &lt; N; i++)
+		gets(str[i]);
+
+	sort(str);
+
+	for (i = 0; i &lt; N; i++)
+		puts(str[i]);
+
+	return 0;
+
+}
+</code></pre>
+<hr>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define N 3
+
+void sort(char* ptr[N]) {
+	char * temp = NULL;
+	int i, j;
+	
+	
+	for (i = 0; i &lt; N; i++) {
+		for (j = i + 1; j &lt; N; j++) {
+			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
+				temp = ptr[i];
+				ptr[i] = ptr[j];
+				ptr[j] = temp;
+			}
+		}
+	}
+}
+
+int main(void)
+{
+    char str1[50],str2[50],str3[50];
+	char * str[3]={str1,str2,str3};
+	int i = 0;
+
+	for (i = 0; i &lt; N; i++)
+		gets(str[i]);
+
+	sort(str);
+
+	for (i = 0; i &lt; N; i++)
+		puts(str[i]);
+
+	return 0;
+}
+</code></pre>
+<p>问题出在 我指针数组里保存的指针都是常量 全是在常量区 无法进行输入 只能输出 不能改变</p>
+<p>所以不能写死一个字符串常量 可以在前面建几个字符数组 然后把数组名放到指针数组里</p>
+<p>贴一个大佬写的 <strong>这样写更标准但是更麻烦</strong>的demo</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ 递归]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/di-gui/</id>
@@ -494,29 +581,6 @@ wlan           - 更改到 `netsh wlan' 上下文。
         <updated>2021-01-02T09:00:35.000Z</updated>
         <content type="html"><![CDATA[<h2 id="排序算法"><a href="https://zhuanlan.zhihu.com/p/36075856">排序算法：<em>归并排序</em></a></h2>
 <p>今天下午在写归并排序 推荐一下知乎的一个答主的文章:排序算法：归并排序 - 程序员囧辉的文章 - 知乎 https://zhuanlan.zhihu.com/p/36075856</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[自增自减]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/">
-        </link>
-        <updated>2021-01-01T18:52:28.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-c">i++的过程为
-
-int temp = i；
-
-i = i + 1；
-
-return a；//返回的是临时变量
-
-++i的过程为
-
-i = i + 1；
-
-return i；
-</code></pre>
-<p>两者的底层实现不同，同理适用于自减。</p>
 ]]></content>
     </entry>
 </feed>

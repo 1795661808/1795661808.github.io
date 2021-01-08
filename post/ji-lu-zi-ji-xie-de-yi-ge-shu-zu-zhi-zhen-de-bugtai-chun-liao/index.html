@@ -30,33 +30,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            MouZaiSi's Blogs
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/MouZaiSi-Demo" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -101,13 +77,141 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">记录自己写的一个数组指针的BUG(太蠢了)</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-01-09 / 2 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>这是错误的demo 无法输入 一直无法进行 用vs调试以后只说数据读取错误</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define N 3
+
+void sort(char* ptr[N]) {
+	char * temp = NULL;
+	int i, j;
+	
+	for (i = 0; i &lt; N; i++) {
+		for (j = i + 1; j &lt; N; j++) {
+			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
+				temp = ptr[i];
+				ptr[i] = ptr[j];
+				ptr[j] = temp;
+			}
+		}
+	}
+}
+int main(void)
+{
+	char* str[3]; //= { &quot;Japan&quot;,&quot;China&quot;,&quot;German&quot; };
+	int i = 0;
+
+	for (i = 0; i &lt; N; i++)
+		gets(str[i]);
+
+	sort(str);
+
+	for (i = 0; i &lt; N; i++)
+		puts(str[i]);
+
+	return 0;
+
+}
+</code></pre>
+<hr>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define N 3
+
+void sort(char* ptr[N]) {
+	char * temp = NULL;
+	int i, j;
+	
+	
+	for (i = 0; i &lt; N; i++) {
+		for (j = i + 1; j &lt; N; j++) {
+			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
+				temp = ptr[i];
+				ptr[i] = ptr[j];
+				ptr[j] = temp;
+			}
+		}
+	}
+}
+
+int main(void)
+{
+    char str1[50],str2[50],str3[50];
+	char * str[3]={str1,str2,str3};
+	int i = 0;
+
+	for (i = 0; i &lt; N; i++)
+		gets(str[i]);
+
+	sort(str);
+
+	for (i = 0; i &lt; N; i++)
+		puts(str[i]);
+
+	return 0;
+}
+</code></pre>
+<p>问题出在 我指针数组里保存的指针都是常量 全是在常量区 无法进行输入 只能输出 不能改变</p>
+<p>所以不能写死一个字符串常量 可以在前面建几个字符数组 然后把数组名放到指针数组里</p>
+<p>贴一个大佬写的 <strong>这样写更标准但是更麻烦</strong>的demo</p>
+
+        </div>
+
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://MouZaiSi-Demo.github.io/post/di-gui/">
+                <h3 class="post-title">
+                   递归
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '42370aada25a5ffb9f93',
+    clientSecret: '6b29b31c09bf7600ab57db1425e4a42cf0fb6c65',
+    repo: 'Gitalk_Warehouse',
+    owner: 'MouZaiSi-Demo',
+    admin: ['MouZaiSi-Demo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 
