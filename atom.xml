@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-08T16:24:43.227Z</updated>
+    <updated>2021-01-08T16:31:08.529Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -94,7 +94,8 @@ int main(void)
 </code></pre>
 <p>问题出在 我指针数组里保存的指针都是常量 全是在常量区 无法进行输入 只能输出 不能改变</p>
 <p>所以不能写死一个字符串常量 可以在前面建几个字符数组 然后把数组名放到指针数组里</p>
-<p>贴一个大佬写的 <strong>这样写更标准但是更麻烦</strong>的demo</p>
+<p>贴一个大佬写的 <strong>这样写更标准但是更麻烦</strong>的demo<br>
+<img src="https://MouZaiSi-Demo.github.io//post-images/1610123462583.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
