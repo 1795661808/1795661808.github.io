@@ -1,359 +1,328 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>某在斯_Dome </title>
-<meta name="description" content="MouZaiSi's Blogs" />
-<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico?v=1610283737862">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
+<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//media/css/tailwind.css">
 <link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="某在斯_Dome  - Atom Feed" href="https://MouZaiSi-Demo.github.io//atom.xml">
 
+    
 
+  <meta name="description" content="MouZaiSi's Blogs" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
 
-  </head>
-  <body>
-    <div class="main px-4 flex flex-col lg:flex-row">
-      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
-  <div class="lg:sticky top-0">
-    <div class="sidebar-content">
-      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
-        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
-        <a href="https://MouZaiSi-Demo.github.io/">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1610283737862" alt="">
-        </a>
-        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">某在斯_Dome </h1>
-      </div>
-      
-        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
-          <p class="my-4 text-gray-600 font-light hidden lg:block">
-            MouZaiSi's Blogs
-          </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/MouZaiSi-Demo" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-          </div>
-        </div>
-      
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
     </div>
   </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        首页
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        归档
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        标签
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        关于
+      </a>
+    
+    <a href="https://MouZaiSi-Demo.github.io//atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
 </div>
 
-<div class="menu-container">
-  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
-  <div>
+    <div class="max-w-4xl w-full mx-auto ">
+      
+        <header class="flex py-16 md:py-32 mt-12 flex-col md:flex-row px-4 md:px-0 animated fadeIn">
+  <div class="flex-1 order-2 md:order-1 md:pr-16">
+    <div class="text-4xl font-bold text-center md:text-left">
+      某在斯_Dome 
+    </div>
+    <div class="text-xl text-gray-500 mt-4 text-center md:text-left">
+      MouZaiSi's Blogs
+    </div>
     
-      
-        <a href="/" class="menu" style="animation-delay: 0s">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu" style="animation-delay: 0.2s">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu" style="animation-delay: 0.4s">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
-          关于
-        </a>
-      
     
   </div>
-  <div class="site-footer">
-    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
-    <a class="rss" href="https://MouZaiSi-Demo.github.io//atom.xml" target="_blank">RSS</a>
+  <div class="md:mx-8 flex-shrink-0 self-start rounded-full border-4 border-dotted border-transparent hover:border-yellow-50 p-2 w-32 h-32 order-1 md:order-2 mx-auto s3-dotted">
+    <img class="rounded-full object-cover" src="https://MouZaiSi-Demo.github.io//images/avatar.png?v=1610285585706" alt="某在斯_Dome " width="100%" height="100%">
   </div>
-</div>
-<div class="mask" onclick="closeMenu()">
-</div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="latest-article text-lg text-gray-700 mb-8">
-          <i class="ri-article-line"></i>
-          最新文章
-        </h2>
-        
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">C语言中++比=优先级高，但为什么x=y++;是想把y的值赋值给x再y自加1</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-10 / 2 min read</div>
-    </div>
-  </section>
+</header>
+      
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${1 * 0.2}s` }">
-    
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">线性方程组什么时候无解？多个解？唯一解？</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
         
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-10 / 3 min read</div>
-    </div>
-  </section>
-
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${2 * 0.2}s` }">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-dai-shu-ji-suan-qi-web-ban/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">线性代数计算器(web版)</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-10 / 1 min read</div>
-    </div>
-  </section>
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          C语言中++比=优先级高，但为什么x=y++;是想把y的值赋值给x再y自加1
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        抖个机灵
+C++界好像一直有这样一个笑话
+C++为了向后兼容C，它必须先照顾到C的种种问题，然后才能++。这就是自增操作符顺序的问题了。
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${3 * 0.2}s` }">
+目前的理解:
+后置自增操作符本身属性决定。
+x=y++；
+y++中后置++操作包含两步，一是取值，二...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/" class="btn">
+        阅读更多
+      </a>
+    </div>
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/zeng-guang-ju-zhen-de-zhi-de-yi-yi-shi-shi-me/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">增广矩阵的秩的意义是什么？</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-10 / 2 min read</div>
-    </div>
-  </section>
+  </div>
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${4 * 0.2}s` }">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">记录自己写的一个数组指针的BUG(太蠢了)</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-09 / 2 min read</div>
-    </div>
-  </section>
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          线性方程组什么时候无解？多个解？唯一解？
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        又是一篇水博客 冲冲冲 冲完期末考刷算法!!!
+线性方程组什么时候无解？多个解？唯一解？
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${5 * 0.2}s` }">
+在本文做些更加直观的解释:
+其实理论上 无论是齐次非齐次都是弄增广矩阵  只是齐次的没有必要这么搞
+非齐次线性方程组:多解，无解，唯一解
+1.化简后...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/" class="btn">
+        阅读更多
+      </a>
+    </div>
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/di-gui/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0"> 递归</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-07 / 3 min read</div>
-    </div>
-  </section>
+  </div>
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${6 * 0.2}s` }">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">指针和数组的羁绊</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-dai-shu-ji-suan-qi-web-ban/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          线性代数计算器(web版)
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Matrix calculator
+推荐一个行列式计算器
+直接展示高斯消元法和莱布尼兹公式以及Montante's methond(https://MouZaiSi-Demo.github.io//post-images/161025591...
       </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-06 / 2 min read</div>
+      <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-dai-shu-ji-suan-qi-web-ban/" class="btn">
+        阅读更多
+      </a>
     </div>
-  </section>
-
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${7 * 0.2}s` }">
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/chang-guo-feng-lao-shi-zhu-bian-de-lesslessji-suan-ji-dao-lun-greatergreater-chu-xian-de-bu-ma-cuo-wu/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">常国峰老师主编的《计算机导论》出现的补码错误</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-06 / 6 min read</div>
-    </div>
-  </section>
+  </div>
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${8 * 0.2}s` }">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/shu-xue-zhi-shi-su-shu-zhuan-ti/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">数学知识——素数专题</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-05 / 2 min read</div>
-    </div>
-  </section>
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/zeng-guang-ju-zhen-de-zhi-de-yi-yi-shi-shi-me/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          增广矩阵的秩的意义是什么？
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        在&quot;耻辱柱&quot;书中
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${9 * 0.2}s` }">
+在提到n元线性方程组的时候Ax=b 直接讲了矩阵A乘向量b与向量b之间秩的关系
+虽然直接由方程组的解去理解定理3的三条 是十分容易的 但你知道意义吗?
+尤其是对计算机学生来说,直观的意义你理解吗?
+所...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/zeng-guang-ju-zhen-de-zhi-de-yi-yi-shi-shi-me/" class="btn">
+        阅读更多
+      </a>
+    </div>
     
-    <div class="content">
-      <a href="https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">12个Visual Studio调试效率技巧(搬运)</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-01-05 / 1 min read</div>
-    </div>
-  </section>
+  </div>
 
-        <div class="read-more">
-          
-            <a href="https://MouZaiSi-Demo.github.io/page/2" class="animated fadeIn font-extrabold text-gray-700 hover:text-gray-900 more-btn">
-              阅读更多
-              <i class="ri-arrow-right-line"></i>
-            </a>
-          
-        </div>
-        <div class="index-page">
-          <div class="pagination-container animated fadeIn">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          记录自己写的一个数组指针的BUG(太蠢了)
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-09</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        这是错误的demo 无法输入 一直无法进行 用vs调试以后只说数据读取错误
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define N 3
+
+void sort(char* p...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/di-gui/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+           递归
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        递归很典型实现的就是阶乘和Fibonacci数列
+这次讲一讲FIbonacci数列
+数学中，斐波那契数，通常表示为˚F Ñ，形成一个序列，叫做斐波纳契数列，使得每个数字是两个前述者的总和，选自0和1。
+因此，序列的开始是：
+1 1 2  3...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/di-gui/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          指针和数组的羁绊
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-06</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        int *p[4]和int(*p)[4]的区别
+intp[4]因为 [ ] 比 * 的优先级高(见文章(p)++和p++的区别?)，所以p先于[ ]结合，是一个数组，然后再与结合，所以这个数组跑p[4]的类型是int *，就是指向int的指...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/chang-guo-feng-lao-shi-zhu-bian-de-lesslessji-suan-ji-dao-lun-greatergreater-chu-xian-de-bu-ma-cuo-wu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          常国峰老师主编的《计算机导论》出现的补码错误
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-06</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        为了冲刺一下周四的计算机期末考试,我打算把学校发的计算机导论教材翻阅一遍(其实读过黑皮系列的计算机导论书和code)
+在第17页的时候发现有违背code内容的地方 便上b乎搜寻问题便发现这位作者回答.
+当然,我还是推荐大家阅读 《编码：隐匿...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/chang-guo-feng-lao-shi-zhu-bian-de-lesslessji-suan-ji-dao-lun-greatergreater-chu-xian-de-bu-ma-cuo-wu/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/shu-xue-zhi-shi-su-shu-zhuan-ti/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          数学知识——素数专题
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-05</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        判断素数(is_prime)
+
+质数
+指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数（也可定义为只有1与该数本身两个正因数的数）。
+
+1.质数的判定
+先给出定义下的c++代码
+bool is_prime(int x)
+{...
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/shu-xue-zhi-shi-su-shu-zhuan-ti/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          12个Visual Studio调试效率技巧(搬运)
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-01-05</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        12个Visual Studio调试效率技巧 - 芝麻麻雀的文章 - 知乎
+
+      </div>
+      <a href="https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/" class="btn">
+        阅读更多
+      </a>
+    </div>
+    
+  </div>
   
-  
-    <a href="https://MouZaiSi-Demo.github.io/page/2" class="page-btn">下一页 <i class="ri-arrow-right-line"></i></a>
-  
-</div>
-
-        </div>
       </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+    
+      <a href="https://MouZaiSi-Demo.github.io/page/2" class="btn btn-white">
+        下一页
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+
     </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://MouZaiSi-Demo.github.io//media/scripts/main.js"></script>
+</body>
 
-    <script src="https://MouZaiSi-Demo.github.io//media/prism.js"></script>  
-<script>
-
-Prism.highlightAll()
-let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-// This should probably be throttled.
-// Especially because it triggers during smooth scrolling.
-// https://lodash.com/docs/4.17.10#throttle
-// You could do like...
-// window.addEventListener("scroll", () => {
-//    _.throttle(doThatStuff, 100);
-// });
-// Only not doing it here to keep this Pen dependency-free.
-
-window.addEventListener("scroll", event => {
-  let fromTop = window.scrollY;
-
-  mainNavLinks.forEach((link, index) => {
-    let section = document.getElementById(decodeURI(link.hash).substring(1));
-    let nextSection = null
-    if (mainNavLinks[index + 1]) {
-      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-    }
-    if (section.offsetTop <= fromTop) {
-      if (nextSection) {
-        if (nextSection.offsetTop > fromTop) {
-          link.classList.add("current");
-        } else {
-          link.classList.remove("current");    
-        }
-      } else {
-        link.classList.add("current");
-      }
-    } else {
-      link.classList.remove("current");
-    }
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
-
-  if ("IntersectionObserver" in window) {
-    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          let lazyImage = entry.target
-          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
-          lazyImage.classList.remove("lazy")
-          lazyImageObserver.unobserve(lazyImage)
-        }
-      });
-    });
-
-    lazyImages.forEach(function(lazyImage) {
-      lazyImageObserver.observe(lazyImage)
-    })
-  } else {
-    // Possibly fall back to a more compatible method here
-  }
-});
-
-const menuContainer = document.querySelector('.menu-container')
-const menus = document.querySelectorAll('.menu-container .menu')
-const mask = document.querySelector('.mask')
-const contentWrapper = document.querySelector('.content-wrapper')
-const latestArticle = document.querySelector('.latest-article')
-const readMore = document.querySelector('.read-more')
-const indexPage = document.querySelector('.index-page')
-
-const isHome = location.pathname === '/'
-if (latestArticle) {
-  latestArticle.style.display = isHome ? 'block' : 'none'
-  readMore.style.display = isHome ? 'block' : 'none'
-  indexPage.style.display = isHome ? 'none' : 'block'
-}
-
-const openMenu = () => {
-  menuContainer.classList.add('open')
-  menus.forEach(menu => {
-    menu.classList.add('animated', 'fadeInLeft')
-  })
-  mask.classList.add('open')
-  contentWrapper.classList.add('is-second')
-}
-
-const closeMenu = () => {
-  menuContainer.classList.remove('open')
-  menus.forEach(menu => {
-    menu.classList.remove('animated', 'fadeInLeft')
-  })
-  mask.classList.remove('open')
-  contentWrapper.classList.remove('is-second')
-}
-</script>
-  
-  </body>
 </html>
