@@ -78,80 +78,26 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16"> 递归</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">C语言中++比=优先级高，但为什么x=y++;是想把y的值赋值给x再y自加1</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2021-01-07 / 3 min read
+          2021-01-10 / 2 min read
         </div>
         
         <div class="post-content yue">
-          <p>递归很典型实现的就是阶乘和Fibonacci数列</p>
-<p>这次讲一讲FIbonacci数列</p>
-<p>数学中，<strong>斐波那契数</strong>，通常表示为<em>˚F Ñ</em>，形成一个<a href="https://en.wikipedia.org/wiki/Integer_sequence">序列</a>，叫做<strong>斐波纳契数列</strong>，使得每个数字是两个前述者的总和，选自0和1。</p>
-<p>因此，序列的开始是：</p>
-<p>1 1 2  3  5  8  13  21  34...</p>
-<p>递推公式</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mo>=</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>1</mn><mo>+</mo><mi>a</mi><mi>n</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">an = an-1 + an-2
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span></p>
-<p>用c写出来的代码就是</p>
-<pre><code class="language-c">#define N 10000
-
-long long  fibonacci(int n)//用longlong是因为fibonacci数列后面的值十分大
-{
-    if (n == 1 || n == 2)
-        return 1;
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-</code></pre>
-<p>但是 如果你递归fibinacci(100) 你会发现值迟迟不出现</p>
-<p>这是因为每次都重复计算了</p>
-<figure data-type="image" tabindex="1"><img src="https://MouZaiSi-Demo.github.io//post-images/1610013869532.jpg" alt="" loading="lazy"></figure>
-<p>从图中，我们可以直观地看到，想要计算 f(5)，需要先计算 f(4) 和 f(3)，而计算 f(4) 还需要计算 f(3)，因此，f(3) 就被计算了很多次，这就是重复计算问题。</p>
-<p>为此 提供一种思路 就是在第一次递归的时候 就把递归过的值给保存在数组中 再每次递归时先检查对应的数组 如果有值就直接调用而不去继续堆栈</p>
-<p>还是用c写</p>
-<pre><code class="language-c">#define N 10000
-
-long long  f[N];//用来保存已经递归的值
-long long  fibonacci(int n)
-{
-    if (n == 1 || n == 2)
-        return 1;
-    if (f[n] != 0)//检查该值有没有被递归过
-        return f[n];
-    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);/*这里要注意 确保两个项的顺序不变 这样能确保右项能直接使用左项保存的值*/
-}
-
-
-</code></pre>
-<p>这样的方法叫做记忆化搜索 也是实现的自顶向下的去搜索</p>
-<p>你再去试试  f(100)轻轻松松 但是在f(1624)的时候会溢出longlong 这时候就得要用数组保存值了</p>
+          <p>抖个机灵</p>
+<p>C++界好像一直有这样一个笑话<br>
+C++为了向后兼容C，它必须先照顾到C的种种问题，然后才能++。这就是自增操作符顺序的问题了。</p>
 <hr>
-<p>完整的输入输出</p>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-
-#define N 10000
-
-long long  f[N];
-long long  fibonacci(int n)
-{
-    if (n == 1 || n == 2)
-        return 1;
-    if (f[n] != 0)
-        return f[n];
-    return f[n] = fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-int main(void)
-{
-    int x;
-    scanf(&quot;%d&quot;, &amp;x);
-
-    printf(&quot;%lld&quot;, fibonacci(x));
-    
-    return 0;
-
-}
-</code></pre>
+<p>目前的理解:</p>
+<p>后置自增操作符本身属性决定。</p>
+<p>x=y++；</p>
+<p>y++中后置++操作包含两步，一是取值，二是自增：</p>
+<p>第一步取值，其结果是将y的值取出来，因为遇到=，所以将y值赋给x</p>
+<p>第二步自增，其结果是将y的值加1<br>
+这两步操作虽然可以分开来看，但却又是不可分割的。<br>
+与之相关的、另一种容易误解的用法是：*ptr++（假设int *ptr=&amp;a[0]） <a href="https://mouzaisi-demo.github.io/post/phe-pde-qu-bie/">(*p)++和*p++的区别?</a></p>
+<p>取值运算符<em>与后置自增运算符++有相同优先级，且结合方向从右至左，按理说，应该先执行ptr++，使得ptr=&amp;a[1]，从而</em>ptr++的值为a[1]。</p>
+<p>然而，因为后置++的固有属性，<em>ptr++是先取ptr的值与</em>结合（第一步），再执行ptr自增加1操作（第二步），即*ptr++的值为a[0]。</p>
 
         </div>
 
@@ -160,21 +106,12 @@ int main(void)
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  记录自己写的一个数组指针的BUG(太蠢了)
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/">
+              <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/">
                 <h3 class="post-title">
-                  指针和数组的羁绊
+                  线性方程组什么时候无解？多个解？唯一解？
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>

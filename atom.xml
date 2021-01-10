@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-10T08:19:55.834Z</updated>
+    <updated>2021-01-10T13:02:22.478Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[C语言中++比=优先级高，但为什么x=y++;是想把y的值赋值给x再y自加1]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/">
+        </link>
+        <updated>2021-01-10T13:02:00.000Z</updated>
+        <content type="html"><![CDATA[<p>抖个机灵</p>
+<p>C++界好像一直有这样一个笑话<br>
+C++为了向后兼容C，它必须先照顾到C的种种问题，然后才能++。这就是自增操作符顺序的问题了。</p>
+<hr>
+<p>目前的理解:</p>
+<p>后置自增操作符本身属性决定。</p>
+<p>x=y++；</p>
+<p>y++中后置++操作包含两步，一是取值，二是自增：</p>
+<p>第一步取值，其结果是将y的值取出来，因为遇到=，所以将y值赋给x</p>
+<p>第二步自增，其结果是将y的值加1<br>
+这两步操作虽然可以分开来看，但却又是不可分割的。<br>
+与之相关的、另一种容易误解的用法是：*ptr++（假设int *ptr=&amp;a[0]） <a href="https://mouzaisi-demo.github.io/post/phe-pde-qu-bie/">(*p)++和*p++的区别?</a></p>
+<p>取值运算符<em>与后置自增运算符++有相同优先级，且结合方向从右至左，按理说，应该先执行ptr++，使得ptr=&amp;a[1]，从而</em>ptr++的值为a[1]。</p>
+<p>然而，因为后置++的固有属性，<em>ptr++是先取ptr的值与</em>结合（第一步），再执行ptr自增加1操作（第二步），即*ptr++的值为a[0]。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[线性方程组什么时候无解？多个解？唯一解？]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/</id>
@@ -393,32 +415,6 @@ V<br>
         </link>
         <updated>2021-01-05T13:34:39.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/157625640">12个Visual Studio调试效率技巧 - 芝麻麻雀的文章 - 知乎</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ (*p)++和*p++的区别?]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/phe-pde-qu-bie/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/phe-pde-qu-bie/">
-        </link>
-        <updated>2021-01-05T06:31:11.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="p">【 *p++ 】</h3>
-<p>后缀递增 <code>++</code> 的优先级 比 取值运算符 <code>*</code> 高 ，<br>
-所以 <code>*p++</code> 等价 <code>*(p++)</code> ，</p>
-<p>后缀递增 <code>p++</code> 会先返回 <code>p</code> ，然后 <code>p = p + 1</code> 。<br>
-所以 <code>*(p++)</code> 返回 <code>*p</code> ，然后把 <code>p</code> 的地址加一。<br>
-（这个 加一 所增加的值取决于指针类型）</p>
-<h3 id="p-2">【 (*p)++ 】</h3>
-<p>括弧决定了结合优先级，取值运算符 <code>*</code> 会被先结合，<br>
-所以会先对 <code>p</code> 的地址取值，取得地址上的数值。<br>
-然后把这个值加一。</p>
-<h2 id="主要区别"><strong>主要区别：</strong></h2>
-<p><code>*p++</code> 是 返回 <code>*p</code> ，然后把 <code>p</code> 的地址加一。<br>
-<code>(*p)++</code> 是取值 <code>p</code> ，然后把这个值加一，返回<code>(*p)</code> 。</p>
-<p><code>*p++</code> 这个 <code>++</code> 的操作是针对地址。<br>
-<code>(*p)++</code> 这个 <code>++</code> 的操作是针对地址上的值。</p>
-<hr>
-<p>这个区别主要是优先级造成的,所以下面贴上c语言的优先级<br>
-<img src="https://MouZaiSi-Demo.github.io//post-images/1609828714533.jpg" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
