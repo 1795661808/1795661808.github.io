@@ -33,14 +33,7 @@
             文章目录
           </p>
           <div class="toc-container hidden lg:block">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">排序算法：</a></li>
-</ul>
-</li>
-</ul>
-
+            
           </div>
         </div>
       
@@ -85,14 +78,27 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">排序算法：归并排序</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">增广矩阵的秩的意义是什么？</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2021-01-02 / 1 min read
+          2021-01-10 / 2 min read
         </div>
         
         <div class="post-content yue">
-          <h2 id="排序算法"><a href="https://zhuanlan.zhihu.com/p/36075856">排序算法：<em>归并排序</em></a></h2>
-<p>今天下午在写归并排序 推荐一下知乎的一个答主的文章:排序算法：归并排序 - 程序员囧辉的文章 - 知乎 https://zhuanlan.zhihu.com/p/36075856</p>
+          <p>在&quot;耻辱柱&quot;书中</p>
+<figure data-type="image" tabindex="1"><img src="https://MouZaiSi-Demo.github.io//post-images/1610248380465.jpg" alt="" loading="lazy"></figure>
+<p>在提到n元线性方程组的时候Ax=b 直接讲了矩阵A乘向量b与向量b之间秩的关系</p>
+<p>虽然直接由方程组的解去理解定理3的三条 是十分容易的 但你知道意义吗?</p>
+<p>尤其是对计算机学生来说,直观的意义你理解吗?</p>
+<p>所以我做了以下几点思考</p>
+<hr>
+<blockquote>
+<p>增广矩阵的秩与一般矩阵的秩表示的几何意义相同。（你别告诉我你不知道矩阵的秩的几何意义。）</p>
+</blockquote>
+<p>在【A】*【X】=【b】中</p>
+<p>增广矩阵的秩与矩阵A的秩相同时，则表明增广矩阵所张成的空间与与【A】所张成的空间相同，表明了【b】在【A】所张成的空间中。此时非齐次线性方程组有解。</p>
+<p>注意 增广矩阵的秩不可能小于原矩阵,而且在任何矩阵中新增新的向量都不应该导致该矩阵降秩。</p>
+<p>如果在一个确认的矩阵[A]中新增一个或者多个向量得到矩阵[B]，若这些向量存在于[A]所张成的空间中，则[A]=[B],[B]的秩当然也会等于[A]的秩。如果新增的向量不存在于[A]所张成的空间中，[A]!=[B]且[B]的秩大于[A]。</p>
+<p>根本原因就是矩阵的秩表示的是矩阵张成的列空间的维度,而维度越高的列空间所包含的信息越多.比如三维空间中所包含的信息就一定大于二维空间,而在一个确定的矩阵中添加向量则相当于在该矩阵表示的空间中添加信息.在一个高维空间中添加信息不可能使该空间降维,因为这已经违反了物理学的信息守恒.</p>
 
         </div>
 
@@ -101,21 +107,12 @@
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/ou-ji-li-de-suan-fa-zhan-zhuan-xiang-chu-fa/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  欧几里得算法(辗转相除法)
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/zi-zeng-zi-jian/">
+              <a href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/">
                 <h3 class="post-title">
-                  自增自减
+                  记录自己写的一个数组指针的BUG(太蠢了)
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
