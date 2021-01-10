@@ -78,16 +78,25 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">线性代数计算器(web版)</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">线性方程组什么时候无解？多个解？唯一解？</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2021-01-10 / 1 min read
+          2021-01-10 / 3 min read
         </div>
         
         <div class="post-content yue">
-          <p><a href="https://matrixcalc.org/zh/?from=mergeek.com">Matrix calculator</a></p>
-<p>推荐一个行列式计算器</p>
-<p>直接展示高斯消元法和莱布尼兹公式以及Montante's methond(https://MouZaiSi-Demo.github.io//post-images/1610255910507.png)!<br>
-<a href="https://MouZaiSi-Demo.github.io//post-images/1610255919055.png"></a></p>
+          <p>又是一篇水博客 冲冲冲 冲完期末考刷算法!!!</p>
+<p><a href="https://blog.csdn.net/lynn0085/article/details/79375614">线性方程组什么时候无解？多个解？唯一解？</a></p>
+<hr>
+<p>在本文做些更加直观的解释:</p>
+<p><em><strong>其实理论上 无论是齐次非齐次都是弄增广矩阵  只是齐次的没有必要这么搞</strong></em></p>
+<p><strong>非齐次线性方程组:多解，无解，唯一解</strong></p>
+<p>1.化简后的有效方程组个数，小于未知数个数。这样的方程组有无穷多个解化简后的有效方程组个数，小于未知数个数。这样的方程组有无穷多个解的意思是 <strong>A矩阵张成的空间是非满秩的 也就是有冗余即多余的基向量(比如有四个基向量(线性方程组中表示的是方程组的个数有四个),但张成这个空间其实只用其中三个 有一个是没用的 所以有效的基向量是三个)</strong> <strong>此时向量的秩也是非满秩的,也是有冗余的 又因为他们A矩阵张成的空间的维数与b向量的维数 相等  所以是有机会存在b在A矩阵张成的空间中的 且 因为冗余所以会有非常多的解</strong></p>
+<p>2.化简后导出(0=d)形式的方程，方程组无解<strong>A矩阵的秩小于增广矩阵的秩 说明b向量不在A矩阵张成的列空间中 且b在比A矩阵张成空间的维度更高一些 根据二维世界难以理解三维世界的物理猜想 是得不到一个向量x根据A矩阵进行空间变化出b向量的</strong></p>
+<p>3.不知道为什么该博客没有给出唯一解的例子 唯一解的例子是这样的:<strong>在第二条的基础上 我们知道非满秩有冗余 那么如果满秩 就是没有冗余 所以信息量是等价的 既然b在A矩阵的张成空间里 那么解就是唯一的</strong></p>
+<p><strong>齐次线性方程组,非零解，零解</strong></p>
+<p><em><strong>多个解叫做有非零解。唯一解叫做零解</strong></em></p>
+<p>1.如果有效方程组个数小于未知数个数，叫做有非零解（多个解）如果有效方程组个数小于未知数个数，叫做有非零解（多个解）的意思是**同上 A矩阵有冗余 所以有非零解  **</p>
+<p>2.如果等于，叫做只有零解（唯一解）<strong>满秩 没有冗余</strong></p>
 
         </div>
 
@@ -96,21 +105,12 @@
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-fang-cheng-zu-shi-me-shi-hou-wu-jie-duo-ge-jie-wei-yi-jie/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  线性方程组什么时候无解？多个解？唯一解？
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://MouZaiSi-Demo.github.io/post/zeng-guang-ju-zhen-de-zhi-de-yi-yi-shi-shi-me/">
+              <a href="https://MouZaiSi-Demo.github.io/post/xian-xing-dai-shu-ji-suan-qi-web-ban/">
                 <h3 class="post-title">
-                  增广矩阵的秩的意义是什么？
+                  线性代数计算器(web版)
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
