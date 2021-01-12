@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-11T16:32:25.485Z</updated>
+    <updated>2021-01-12T15:42:02.798Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,58 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[2021.1.12 C语言混沌的一天]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/2021112-c-yu-yan-hun-dun-de-yi-tian/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/2021112-c-yu-yan-hun-dun-de-yi-tian/">
+        </link>
+        <updated>2021-01-12T15:41:46.000Z</updated>
+        <content type="html"><![CDATA[<p>今天状态很不好 哎水一下 递归文 救一下可怜的隔离cbh</p>
+<pre><code class="language-c">void PrintN(int N) 
+{    
+	if(N == 0) return;  //[1]回归条件; 
+    
+	PrintN(N - 1);      //[2]递推;  
+    
+	printf(&quot;%d, &quot;, N);  //[3]当前 case 的工作; 
+} 
+</code></pre>
+<p>这个函里，很清晰的展现了递归函数的组成部分：<br>
+其中：[2] 和 [3] 组成基本逻辑。递归的 idea 和数学归纳法是同一个思路。<br>
+数学归纳法是：<br>
+（1）证明 case 0 成立；<br>
+（2）如果 case i 成立 =&gt; 则 case ( i + 1 ) 成立。</p>
+<p>在这个问题里，</p>
+<p><strong>定义函数 PrintN ( by argument N )  means: 打印从 1 到 N 的一系列数字。</strong></p>
+<p>因此，该函数的实现逻辑是：</p>
+<p>（1）打印出从 1 到 N-1 的一系列数字。即调用 PrintN ( N - 1) ；这是 PrintN 的定义；<br>
+（2）然后打印出 N；</p>
+<p>分别对应了代码中的 [2], [3] 。</p>
+<p>然后找出回归条件，本例子中，就是 PrintN 打印的一系列数字是从 ？ 开始的，假设从 N1 开始，则应该在 case N &lt; N1 时回归。也就是说回归条件是：</p>
+<p>（3）if ( N &lt; N1 ) return;</p>
+<p>本题目中，N1 = 1；对应于代码中的 [1];</p>
+<p>因此上面的函数也等价于：</p>
+<pre><code class="language-cpp">void PrintN(int N) 
+{
+    if(N &gt; 0) 
+    {
+        PrintN(N - 1);
+        printf(&quot;%d, &quot;, N);
+    }
+} 
+</code></pre>
+<p>可以表述成一下的 call是调用的意思</p>
+<p>call PrintN(4)</p>
+<p>|-- call PrintN(3)</p>
+<p>|     |--call PrintN(2)</p>
+<p>|     |     |--call PrintN(1)</p>
+<p>|     |     |     |--call PrintN(0); //return directly;</p>
+<p>|     |     |     |--printf 1; // output 1, return from PrintN(1);</p>
+<p>|     |     |--printf 2; //output 2, return from PrintN(2);</p>
+<p>|     |--printf 3; //output 3, return from PrintN(3);</p>
+<p>|--printf 4; //output 4, return from PrintN(4);</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言中++比=优先级高，但为什么x=y++;是想把y的值赋值给x再y自加1]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/c-yu-yan-zhong-bi-you-xian-ji-gao-dan-wei-shi-me-xyshi-xiang-ba-y-de-zhi-fu-zhi-gei-x-zai-y-zi-jia-1/</id>
@@ -406,15 +458,6 @@ V<br>
 <p>这样子看似可以 但是i如果是int 那么最大只有2的31次(正数) 当x非常接近于2的31次时 (i+1)的平方就溢出了 这样根据编码 会变成负数</p>
 <hr>
 <p>未完待续......</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[12个Visual Studio调试效率技巧(搬运)]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/12-ge-visual-studio-diao-shi-xiao-lu-ji-qiao-ban-yun/">
-        </link>
-        <updated>2021-01-05T13:34:39.000Z</updated>
-        <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/157625640">12个Visual Studio调试效率技巧 - 芝麻麻雀的文章 - 知乎</a></p>
 ]]></content>
     </entry>
 </feed>
