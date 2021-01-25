@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-01-17T05:12:16.095Z</updated>
+    <updated>2021-01-25T06:36:51.994Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,125 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[图形打印和数学的关系]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/tu-xing-da-yin-he-shu-xue-de-guan-xi/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/tu-xing-da-yin-he-shu-xue-de-guan-xi/">
+        </link>
+        <updated>2021-01-25T06:35:51.000Z</updated>
+        <content type="html"><![CDATA[<p>1.图形打印是需要遍历图形的整块的 一般是矩形或正方形 所以循环嵌套的需要知道行</p>
+<p>2.满足线性规划或者其他代数表示图形的条件(<strong>important</strong>)</p>
+<p>3.遍历打印即可</p>
+<hr>
+<p><strong>L1-002</strong> <strong>打印沙漏</strong></p>
+<p>本题要求你写个程序把给定的符号打印成沙漏的形状。例如给定17个“*”，要求按下列格式打印</p>
+<pre><code>*****
+ ***
+  *
+ ***
+*****
+</code></pre>
+<p>所谓“沙漏形状”，是指每行输出奇数个符号；各行符号中心对齐；相邻两行符号数差2；符号数先从大到小顺序递减到1，再从小到大顺序递增；首尾符号数相等。</p>
+<p>给定任意N个符号，不一定能正好组成一个沙漏。要求打印出的沙漏能用掉尽可能多的符号。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入在一行给出1个正整数N（≤1000）和一个符号，中间以空格分隔。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>首先打印出由给定符号组成的最大的沙漏形状，最后在一行中输出剩下没用掉的符号数。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">19 *
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">*****
+ ***
+  *
+ ***
+*****
+2
+</code></pre>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+using namespace std;
+int main(void)
+{
+    int x, n;
+    char c;
+
+    cin &gt;&gt; x &gt;&gt; c;
+    if (x == 1)
+    {
+        cout &lt;&lt; c &lt;&lt; endl;
+        cout &lt;&lt; &quot;0&quot;;
+        return 0;
+    }
+
+    for (int i = 0; i &lt; x; i++)
+    {
+        if ((2 * i * (i + 2) + 1) &gt; x)
+        {
+            n = i - 1;
+            break;
+        }
+    }
+    int row = n * 2 + 1;//算一共打印多少行 才好用笛卡尔坐标下的线性规划
+    for (int i = 1; i &lt;= row; i++)//x轴从1开始
+    {
+        for (int j = 1; j &lt;= row; j++)//y轴从1开始
+        {
+            if ((j + i &lt;= row + 1 &amp;&amp; i &lt;= j) || (j + i &gt;= row + 1 &amp;&amp; i &gt;= j))cout &lt;&lt; c;
+            else if (i &gt; j &amp;&amp; i + j &lt; row + 1)  cout &lt;&lt; &quot; &quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    cout &lt;&lt; (x - (2 * n * (n + 2) + 1));
+
+    return 0;
+}
+</code></pre>
+<hr>
+<p>输入一个奇数n，输出一个由‘*’构成的n阶实心菱形。</p>
+<p>输入格式</p>
+<p>一个奇数n。</p>
+<p>输出格式</p>
+<p>输出一个由‘*’构成的n阶实心菱形。</p>
+<p>具体格式参照输出样例。</p>
+<p>数据范围</p>
+<p>1≤n≤991≤n≤99</p>
+<p>输入样例：</p>
+<pre><code>5
+</code></pre>
+<p>输出样例：</p>
+<pre><code>  *  
+ *** 
+*****
+ *** 
+  *  
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://MouZaiSi-Demo.github.io//post-images/1611556590690.png" alt="" loading="lazy"></figure>
+<p>code:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n;
+    cin &gt;&gt; n;
+
+    int cx = n / 2, cy = n / 2;//图形中心点
+    for (int i = 0; i &lt; n; i ++ ) 
+    {
+        for (int j = 0; j &lt; n; j ++ )
+            if (abs(i - cx) + abs(j - cy) &lt;= n / 2) cout &lt;&lt; '*';//小于n/2就是边长的一半
+            else cout &lt;&lt; ' ';
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ 齐次线性方程组的基础解系]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/qi-ci-xian-xing-fang-cheng-zu-de-ji-chu-jie-xi/</id>
@@ -331,21 +450,6 @@ int main(void)
 
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[指针和数组的羁绊]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/zhi-zhen-he-shu-zu-de-ji-ban/">
-        </link>
-        <updated>2021-01-06T13:10:15.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="int-p4和intp4的区别">int *p[4]和int(*p)[4]的区别</h4>
-<p>int<em>p[4]因为 [ ] 比 * 的优先级高(见文章<a href="https://mouzaisi-demo.github.io/post/phe-pde-qu-bie/">(<em>p)++和</em>p++的区别?</a>)，所以p先于[ ]结合，是一个数组，然后再与</em>结合，所以这个数组跑p[4]的类型是int *，就是指向int的指针，就是“元素是指向整形数据的指针的数组”。每个元素都是一个指针，一共有4个元素。指针就是地址本身，而指针变量是用来存放地址的变量。</p>
-<p>而int(<em>p)[4]，p先和</em>结合，意味着p是一个指针，他指向int [10]，即p是一个指向一个数组的指针，</p>
-<p>比如a[4][10]，它包括a[0][10],a[1][10],a[2][10]，a[3][10],a[0],a[1],a[2],a[3]，可以表示成a[i]==*(a+i)；所以(*P)[10]，p可以等于a+i，p是指向大小为10的数组，p的增一减一是以一行为单位的（比如4行10列）。</p>
-<p>实际int(*p)[4]就是一个二维数组，代表n行4列的数组.</p>
-<hr>
-<p>未完待续...</p>
 ]]></content>
     </entry>
 </feed>
