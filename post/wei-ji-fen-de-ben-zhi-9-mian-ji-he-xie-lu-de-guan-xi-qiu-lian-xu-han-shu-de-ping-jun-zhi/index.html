@@ -1,0 +1,363 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值) - 某在斯_Dome </title>
+<link rel="shortcut icon" href="https://MouZaiSi-Demo.github.io//favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//media/css/tailwind.css">
+<link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值) - 某在斯_Dome  - Atom Feed" href="https://MouZaiSi-Demo.github.io//atom.xml">
+
+    
+
+  <meta name="description" content="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+转自知乎文章(为了防止哪天消失...) 微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+
+❤️总..." />
+  <meta property="og:title" content="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值) - 某在斯_Dome ">
+  <meta property="og:description" content="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+转自知乎文章(为了防止哪天消失...) 微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+
+❤️总..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://MouZaiSi-Demo.github.io/post/wei-ji-fen-de-ben-zhi-9-mian-ji-he-xie-lu-de-guan-xi-qiu-lian-xu-han-shu-de-ping-jun-zhi/" />
+  <meta property="og:image" content="https://MouZaiSi-Demo.github.io//images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值) - 某在斯_Dome ">
+  <meta name="twitter:description" content="微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+转自知乎文章(为了防止哪天消失...) 微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+
+❤️总...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://MouZaiSi-Demo.github.io/post/wei-ji-fen-de-ben-zhi-9-mian-ji-he-xie-lu-de-guan-xi-qiu-lian-xu-han-shu-de-ping-jun-zhi/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://MouZaiSi-Demo.github.io//media/css/prism-synthwave84.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://MouZaiSi-Demo.github.io/" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      某在斯_Dome 
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2021-03-24 · 3 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h1 id="微积分的本质9-面积和斜率的关系求连续函数的平均值">微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)</h1>
+<p>转自知乎文章(为了防止哪天消失...) 微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)</p>
+<p><a href="https://www.zhihu.com/people/nuan-nuan-73-43">微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)</a></p>
+<hr>
+<h2 id="️总结️">❤️总结❤️</h2>
+<p><strong>1.什么时候会用到微积分呢？</strong></p>
+<ul>
+<li>①当问题可以通过<strong>细分、相加</strong>的方式进行<strong>估算</strong>，可以利用微积分解决。</li>
+<li>②如果是<strong>有限</strong>数量求均值，我们知道利用<strong>相加除以个数</strong>的方法解决问题，那么推广到<strong>连续变量求平均值</strong>，也就是<strong>无限</strong>数量的话，可以用<strong>积分</strong>来描述本问题。这种方法在<strong>概率论</strong>中常出现。</li>
+</ul>
+<p><strong>2. 求连续函数 f(x) 在区间 [a, b] 的平均值</strong></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577110836.jpg" alt="" loading="lazy"><img src="1.jpg" alt="" loading="lazy"></p>
+<ul>
+<li>计算任意连续函数 f(x) 的平均值，归根到底是要<strong>寻*找原函数*</strong> F(x)</li>
+<li>然后将平均值=<strong>原函数的高度变化值/宽度</strong>=<strong>原函数在这个区间起点与终点连线的斜率</strong>（这是因为 f(x) 是原函数 F(x) 在每一点切线斜率的值），</li>
+<li>这样就将<strong>求解连续函数平均值转化为原函数各点切线的平均斜率</strong>，这样就仅仅考虑起点、终点，不需要考虑中间的任何点。</li>
+</ul>
+<p><strong>可以看得出为什么原函数是解决积分问题的关键 ✅</strong>✅✅</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577302553.png" alt="" loading="lazy"><img src="2.png" alt="" loading="lazy"></p>
+<hr>
+<h2 id="ヽノ正文ヽノ">✿✿ヽ(°▽°)ノ✿正文✿✿ヽ(°▽°)ノ✿</h2>
+<p>本部分将包含以下三部分内容：</p>
+<ol>
+<li><img src="https://www.zhihu.com/equation?tex=%5Csin+x" alt="[公式]" loading="lazy"> 在 <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Cpi%5D" alt="[公式]" loading="lazy"> 区间的平均高度是什么？</li>
+<li>面积与斜率的关系</li>
+<li>将 <img src="https://www.zhihu.com/equation?tex=%5Csin+x" alt="[公式]" loading="lazy"> 一般化为任意的函数 <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="[公式]" loading="lazy"></li>
+</ol>
+<h2 id="1-在-区间的平均高度是什么">1.<img src="https://www.zhihu.com/equation?tex=%5Csin+x" alt="[公式]" loading="lazy"> 在 <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Cpi%5D" alt="[公式]" loading="lazy"> 区间的平均高度是什么？</h2>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577316248.jpg" alt="" loading="lazy"><img src="3.jpg" alt="" loading="lazy"></p>
+<p>这个问题不是没有实际意义。事实上，<strong>世界上好多周期现象都可以用正弦函数来描述</strong>。 如，我们研究夏天与冬天太阳能板的充电效率，就可通过研究正弦函数上半周期的平均值&amp;下半周期的平均值的差异来解决。</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577321056.jpg" alt="" loading="lazy"><img src="4.jpg" alt="" loading="lazy"></p>
+<p>提到平均值，我们一般指的是有限个变量值。但 <img src="https://www.zhihu.com/equation?tex=%5Csin+x" alt="[公式]" loading="lazy"> 在 <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Cpi%5D" alt="[公式]" loading="lazy"> 区间有<strong>无数个变化</strong>的值，因此我们不能把对应的函数值加起来，然后除以无穷大。</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577326804.jpg" alt="" loading="lazy"><img src="5.jpg" alt="" loading="lazy"></p>
+<p>这实际上就是求<strong>连续函数值的平均值</strong>。 当有这种直觉产生的时候，就可以运用<strong>积分</strong>来解决问题的核心。</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577332404.jpg" alt="" loading="lazy"><img src="6.jpg" alt="" loading="lazy"></p>
+<p><strong>利用有限数值来进行估算是一个不错的选择。</strong></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577337366.jpg" alt="" loading="lazy"><img src="7.jpg" alt="" loading="lazy"></p>
+<p>假设无数个点取平均值是有意义的，那么<strong>取越来越多的点来计算高度和并取均值。这样计算出的平均值越来越接近实际的连续变量平均值</strong>。</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577343168.png" alt="" loading="lazy"><img src="8.png" alt="" loading="lazy"></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577352321.jpg" alt="" loading="lazy"><img src="9.jpg" alt="" loading="lazy"></p>
+<p>当我们取间隔 dx 越来越小，那么将会越来越接近真实值，利用微积分的几何意义，图像的平均高度=面积/宽度，</p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577360501.jpg" alt="" loading="lazy"><img src="10.jpg" alt="" loading="lazy"></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577364770.png" alt="" loading="lazy"><img src="11.png" alt="" loading="lazy"></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577370995.jpg" alt="" loading="lazy"><img src="12.jpg" alt="" loading="lazy"></p>
+<p>经过上述整理，可得<strong>在某一个区间上的所有切线的平均斜率等于起点与终点连线的斜率</strong></p>
+<h2 id="3将-sinx-一般化为任意函数">3.将 sinx 一般化为任意函数</h2>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577382333.jpg" alt="" loading="lazy"><img src="13.jpg" alt="" loading="lazy"></p>
+<p>实际上是通过分割，不断的减小 <strong>dx</strong>  ，越来越接近真实值。<strong>这恰恰说明当我们取的点数越多，近似出越来越精确的平均值。</strong></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577390731.jpg" alt="" loading="lazy"><img src="14.jpg" alt="" loading="lazy"></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577395649.png" alt="" loading="lazy"><img src="15.png" alt="" loading="lazy"></p>
+<p><img src="https://MouZaiSi-Demo.github.io//post-images/1616577401478.jpg" alt="" loading="lazy"><img src="16.jpg" alt="" loading="lazy"></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A89-%E9%9D%A2%E7%A7%AF%E5%92%8C%E6%96%9C%E7%8E%87%E7%9A%84%E5%85%B3%E7%B3%BB%E6%B1%82%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC">微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)</a>
+<ul>
+<li><a href="#%EF%B8%8F%E6%80%BB%E7%BB%93%EF%B8%8F">❤️总结❤️</a></li>
+<li><a href="#%E3%83%BD%E3%83%8E%E6%AD%A3%E6%96%87%E3%83%BD%E3%83%8E">✿✿ヽ(°▽°)ノ✿正文✿✿ヽ(°▽°)ノ✿</a></li>
+<li><a href="#1-%E5%9C%A8-%E5%8C%BA%E9%97%B4%E7%9A%84%E5%B9%B3%E5%9D%87%E9%AB%98%E5%BA%A6%E6%98%AF%E4%BB%80%E4%B9%88">1.<img src="https://www.zhihu.com/equation?tex=%5Csin+x" alt="[公式]"> 在 <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Cpi%5D" alt="[公式]"> 区间的平均高度是什么？</a></li>
+<li><a href="#3%E5%B0%86-sinx-%E4%B8%80%E8%88%AC%E5%8C%96%E4%B8%BA%E4%BB%BB%E6%84%8F%E5%87%BD%E6%95%B0">3.将 sinx 一般化为任意函数</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://MouZaiSi-Demo.github.io//media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://MouZaiSi-Demo.github.io//media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '42370aada25a5ffb9f93',
+    clientSecret: '6b29b31c09bf7600ab57db1425e4a42cf0fb6c65',
+    repo: 'Gitalk_Warehouse',
+    owner: 'MouZaiSi-Demo',
+    admin: ['MouZaiSi-Demo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>
