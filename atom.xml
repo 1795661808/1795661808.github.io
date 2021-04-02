@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://MouZaiSi-Demo.github.io/</id>
     <title>某在斯_Dome </title>
-    <updated>2021-03-24T09:18:57.766Z</updated>
+    <updated>2021-04-02T10:02:17.696Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://MouZaiSi-Demo.github.io/"/>
     <link rel="self" href="https://MouZaiSi-Demo.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://MouZaiSi-Demo.github.io/images/avatar.png</logo>
     <icon>https://MouZaiSi-Demo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 某在斯_Dome </rights>
+    <entry>
+        <title type="html"><![CDATA[为什么求模运算要用素数（质数）—— 哈希表设计]]></title>
+        <id>https://MouZaiSi-Demo.github.io/post/wei-shi-me-qiu-mo-yun-suan-yao-yong-su-shu-zhi-shu-ha-xi-biao-she-ji/</id>
+        <link href="https://MouZaiSi-Demo.github.io/post/wei-shi-me-qiu-mo-yun-suan-yao-yong-su-shu-zhi-shu-ha-xi-biao-she-ji/">
+        </link>
+        <updated>2021-04-02T10:00:30.000Z</updated>
+        <content type="html"><![CDATA[<p>转自<a href="http://www.vvbin.com/?p=376">为什么求模运算要用素数（质数）—— 哈希表设计</a></p>
+<p>在设计用除法来散射的哈希表时，我们都会用数值模哈希表大小，得到的余数来作为ID存入哈希表对应格子中。所有文章都表明要用一个较大的素数来作为哈希表的大小，也就是要模一个较大的素数。但为什么就是要用素数呢？简单分析一下可以看出玄机。</p>
+<p>先看看如果用一个合数8作为哈希表大小，0-30在哈希表中的散射情况：</p>
+<p>（表1）<br>
+<img src="https://MouZaiSi-Demo.github.io//post-images/1617357691752.png" alt="" loading="lazy"></p>
+<p>再来看看用质数7作为哈希表大小，0-30在哈希表中的散射情况：</p>
+<p>（表2）<br>
+<img src="https://MouZaiSi-Demo.github.io//post-images/1617357731692.png" alt="" loading="lazy"></p>
+<p>我们都知道，合数8除了1和自身以外，还有2跟4这两个因数。观察表1的单独一列可以发现，这些在同一列的数，他们实际上就是上一个数+8，而查看2、4、6这三行我们发现，因为2 4 6 能被2（或4）整除，而在同一列上的数在+8以后一样满足可以被2（或4）整除的这一特性。例如4这一列，4、12、20、28，这些哈希映射在同一个格子里的数都是前一个数+8，然后他们都能被2和4整除，这样就导致他们之间有很强烈的关系，很容易发生哈希冲突。</p>
+<p>再来看看表2，同样情况，同一列中的数都是由上一个数+7得到的，但因为7是一个素数，它除了1跟本身之外没有其他因数，所以在同一列的数里就找不到我们刚刚所说的那种特性。</p>
+<p>而我们都知道，哈希表设计目的就是希望尽量的随机散射，不希望这些在同一列上的元素（也就是会冲突的元素）之间具有关系，所以我们都采用素数作为哈希表的大小，从而避免模数相同的数之间具备公共因数。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[微积分的本质(9)--面积和斜率的关系？(求连续函数的平均值)]]></title>
         <id>https://MouZaiSi-Demo.github.io/post/wei-ji-fen-de-ben-zhi-9-mian-ji-he-xie-lu-de-guan-xi-qiu-lian-xu-han-shu-de-ping-jun-zhi/</id>
@@ -345,94 +364,6 @@ C++为了向后兼容C，它必须先照顾到C的种种问题，然后才能++�
 <p>注意 增广矩阵的秩不可能小于原矩阵,而且在任何矩阵中新增新的向量都不应该导致该矩阵降秩。</p>
 <p>如果在一个确认的矩阵[A]中新增一个或者多个向量得到矩阵[B]，若这些向量存在于[A]所张成的空间中，则[A]=[B],[B]的秩当然也会等于[A]的秩。如果新增的向量不存在于[A]所张成的空间中，[A]!=[B]且[B]的秩大于[A]。</p>
 <p>根本原因就是矩阵的秩表示的是矩阵张成的列空间的维度,而维度越高的列空间所包含的信息越多.比如三维空间中所包含的信息就一定大于二维空间,而在一个确定的矩阵中添加向量则相当于在该矩阵表示的空间中添加信息.在一个高维空间中添加信息不可能使该空间降维,因为这已经违反了物理学的信息守恒.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记录自己写的一个数组指针的BUG(太蠢了)]]></title>
-        <id>https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/</id>
-        <link href="https://MouZaiSi-Demo.github.io/post/ji-lu-zi-ji-xie-de-yi-ge-shu-zu-zhi-zhen-de-bugtai-chun-liao/">
-        </link>
-        <updated>2021-01-08T16:23:18.000Z</updated>
-        <content type="html"><![CDATA[<p>这是错误的demo 无法输入 一直无法进行 用vs调试以后只说数据读取错误</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-#define N 3
-
-void sort(char* ptr[N]) {
-	char * temp = NULL;
-	int i, j;
-	
-	for (i = 0; i &lt; N; i++) {
-		for (j = i + 1; j &lt; N; j++) {
-			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
-				temp = ptr[i];
-				ptr[i] = ptr[j];
-				ptr[j] = temp;
-			}
-		}
-	}
-}
-int main(void)
-{
-	char* str[3]; //= { &quot;Japan&quot;,&quot;China&quot;,&quot;German&quot; };
-	int i = 0;
-
-	for (i = 0; i &lt; N; i++)
-		gets(str[i]);
-
-	sort(str);
-
-	for (i = 0; i &lt; N; i++)
-		puts(str[i]);
-
-	return 0;
-
-}
-</code></pre>
-<hr>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-#define N 3
-
-void sort(char* ptr[N]) {
-	char * temp = NULL;
-	int i, j;
-	
-	
-	for (i = 0; i &lt; N; i++) {
-		for (j = i + 1; j &lt; N; j++) {
-			if (strcmp(ptr[i], ptr[j]) &gt; 0) {
-				temp = ptr[i];
-				ptr[i] = ptr[j];
-				ptr[j] = temp;
-			}
-		}
-	}
-}
-
-int main(void)
-{
-    char str1[50],str2[50],str3[50];
-	char * str[3]={str1,str2,str3};
-	int i = 0;
-
-	for (i = 0; i &lt; N; i++)
-		gets(str[i]);
-
-	sort(str);
-
-	for (i = 0; i &lt; N; i++)
-		puts(str[i]);
-
-	return 0;
-}
-</code></pre>
-<p>问题出在 我指针数组里保存的指针都是常量 全是在常量区 无法进行输入 只能输出 不能改变</p>
-<p>所以不能写死一个字符串常量 可以在前面建几个字符数组 然后把数组名放到指针数组里</p>
-<p>贴一个大佬写的 <strong>这样写更标准但是更麻烦</strong>的demo<br>
-<img src="https://MouZaiSi-Demo.github.io//post-images/1610123462583.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
